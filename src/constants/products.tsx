@@ -9,8 +9,8 @@ import sidefolioTailwindMasterKit2 from "public/images/sidefolio-tailwindmasterk
 
 export const products = [
   {
-    href: "https://aceternity.com",
-    title: "Aceternity",
+    href: "https://social-web-lake.vercel.app/",
+    title: "Social-Web",
     description:
       "A design and development studio that focuses on building quality apps.",
     thumbnail: sidefolioAceternity,
