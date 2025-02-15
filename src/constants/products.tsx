@@ -40,7 +40,7 @@ export const products = [
   },
   {
     href: "https://algochurn.com",
-    title: "Algochurn",
+    title: "chat app",
     description:
       "Practice for technical interviews with hands on coding challenges.",
     thumbnail: sidefolioAlgochurn,
@@ -70,7 +70,7 @@ export const products = [
   },
   {
     href: "https://gomoonbeam.com",
-    title: "Moonbeam",
+    title: "movie searching",
     description:
       "Never write from scratch again with Moonbeam, your AI first writing tool",
     thumbnail: sidefolioMoonbeam,
