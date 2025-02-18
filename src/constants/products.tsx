@@ -9,8 +9,8 @@ import sidefolioTailwindMasterKit2 from "public/images/sidefolio-tailwindmasterk
 
 export const products = [
   {
-    href: "https://social-web-lake.vercel.app/",
-    title: "Social-Web",
+    href: "https://aceternity.com",
+    title: "Aceternity",
     description:
       "A design and development studio that focuses on building quality apps.",
     thumbnail: sidefolioAceternity,
@@ -20,23 +20,27 @@ export const products = [
     content: (
       <div>
         <p>
-        Social-app adalah aplikasi media sosial inovatif yang saya kembangkan menggunakan teknologi 
-        Next.js, Tailwind CSS, dan Prisma. Aplikasi ini dirancang untuk menyediakan platform 
-        interaktif di mana pengguna dapat terhubung, berbagi konten, dan berinteraksi dalam 
-        komunitas yang dinamis.{" "}
+          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
+          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
+          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
+          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
+          non cupidatat duis esse velit ut culpa et.{" "}
         </p>
         <p>
-        Selama pengembangan Social-app, saya menghadapi berbagai tantangan teknis seperti 
-        optimisasi performa untuk rendering sisi server dan pengelolaan skema basis data yang 
-        kompleks. Melalui proyek ini, saya memperdalam pemahaman saya tentang arsitektur front-end dan back-end, 
-        serta praktik terbaik dalam desain antarmuka pengguna.
+          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
+          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
+          sit aute fugiat incididunt nostrud consequat proident fugiat id.
+          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
+          reprehenderit. Cillum Lorem veniam eu magna exercitation.
+          Reprehenderit adipisicing minim et officia enim et veniam Lorem
+          excepteur velit adipisicing et Lorem magna.
         </p>{" "}
       </div>
     ),
   },
   {
     href: "https://algochurn.com",
-    title: "chat app",
+    title: "Algochurn",
     description:
       "Practice for technical interviews with hands on coding challenges.",
     thumbnail: sidefolioAlgochurn,
@@ -46,47 +50,57 @@ export const products = [
     content: (
       <div>
         <p>
-        Chat-app adalah aplikasi pesan instan yang saya kembangkan menggunakan stack teknologi MERN 
-        (MongoDB, Express.js, React, Node.js). Aplikasi ini dirancang untuk menyediakan platform komunikasi 
-        real-time yang cepat dan aman bagi penggunanya.{" "}
+          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
+          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
+          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
+          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
+          non cupidatat duis esse velit ut culpa et.{" "}
         </p>
         <p>
-        Selama pengembangan Chat-app, saya menghadapi berbagai tantangan teknis seperti memastikan latensi rendah 
-        untuk pesan real-time dan implementasi enkripsi end-to-end untuk keamanan data. Melalui proyek ini, saya 
-        memperdalam pemahaman saya tentang arsitektur full-stack dan teknik optimisasi performa untuk aplikasi real-time.
+          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
+          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
+          sit aute fugiat incididunt nostrud consequat proident fugiat id.
+          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
+          reprehenderit. Cillum Lorem veniam eu magna exercitation.
+          Reprehenderit adipisicing minim et officia enim et veniam Lorem
+          excepteur velit adipisicing et Lorem magna.
         </p>{" "}
       </div>
     ),
   },
   {
     href: "https://gomoonbeam.com",
-    title: "movie searching",
+    title: "Moonbeam",
     description:
       "Never write from scratch again with Moonbeam, your AI first writing tool",
     thumbnail: sidefolioMoonbeam,
     images: [sidefolioMoonbeam, sidefolioMoonbeam2],
-    stack: ["ReactJs", "Tailwindcss"],
+    stack: ["Nextjs", "Tailwindcss"],
     slug: "moonbeam",
     content: (
       <div>
         <p>
-          SMovie Searching adalah aplikasi pencarian film yang saya kembangkan 
-          menggunakan ReactJS dan API dari The Movie Database (TMDb). Aplikasi ini dirancang 
-          untuk memungkinkan pengguna mencari informasi tentang berbagai film, melihat tren 
-          terbaru, dan menemukan film yang sesuai dengan minat mereka.{" "}
+          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
+          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
+          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
+          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
+          non cupidatat duis esse velit ut culpa et.{" "}
         </p>
         <p>
-        Selama pengembangan Movie Searching, saya menghadapi berbagai tantangan teknis seperti 
-        integrasi API dengan komponen React dan pengelolaan state yang efisien untuk memastikan performa 
-        aplikasi tetap optimal. Melalui proyek ini, saya memperdalam pemahaman saya tentang pengembangan 
-        front-end dan teknik terbaik dalam konsumsi API.
+          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
+          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
+          sit aute fugiat incididunt nostrud consequat proident fugiat id.
+          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
+          reprehenderit. Cillum Lorem veniam eu magna exercitation.
+          Reprehenderit adipisicing minim et officia enim et veniam Lorem
+          excepteur velit adipisicing et Lorem magna.
         </p>{" "}
       </div>
     ),
   },
   {
     href: "https://tailwindmasterkit.com",
-    title: "Doctor Appointment",
+    title: "Tailwind Master Kit",
     description:
       "A beautiful and comprehensive Tailwind CSS components library for building modern websites and applications.",
     thumbnail: sidefolioTailwindMasterKit,
@@ -96,15 +110,20 @@ export const products = [
     content: (
       <div>
         <p>
-        Doctor Appointment adalah aplikasi manajemen janji temu dokter yang saya kembangkan menggunakan 
-        Next.jsdan Tailwind CSS. Aplikasi ini dirancang untuk memudahkan pasien dalam membuat janji temu 
-        dengan dokter, mengelola jadwal, dan mendapatkan informasi tentang layanan kesehatan yang tersedia.{" "}
+          Sit eiusmod ex mollit sit quis ad deserunt. Sint aliqua aliqua ullamco
+          dolore nulla amet tempor sunt est ipsum. Dolor laborum eiusmod
+          cupidatat consectetur velit ipsum. Deserunt nisi in culpa laboris
+          cupidatat elit velit aute mollit nisi. Officia ad exercitation laboris
+          non cupidatat duis esse velit ut culpa et.{" "}
         </p>
         <p>
-        Selama pengembangan Doctor Appointment, saya menghadapi berbagai tantangan teknis seperti integrasi 
-        kalender interaktif dan optimisasi performa untuk pengalaman pengguna yang mulus. 
-        Melalui proyek ini, saya memperdalam pemahaman saya tentang pengembangan front-end dan back-end serta 
-        praktik terbaik dalam desain antarmuka pengguna dan pengalaman pengguna.
+          Exercitation pariatur enim occaecat adipisicing nostrud adipisicing
+          Lorem tempor ullamco exercitation quis et dolor sint. Adipisicing sunt
+          sit aute fugiat incididunt nostrud consequat proident fugiat id.
+          Officia aliquip laborum labore eu culpa dolor reprehenderit eu ex enim
+          reprehenderit. Cillum Lorem veniam eu magna exercitation.
+          Reprehenderit adipisicing minim et officia enim et veniam Lorem
+          excepteur velit adipisicing et Lorem magna.
         </p>{" "}
       </div>
     ),
