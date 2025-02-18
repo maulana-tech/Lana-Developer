@@ -10,9 +10,9 @@ import { motion } from "framer-motion";
 import About from "@/components/About";
 
 export const metadata: Metadata = {
-  title: "About | Maulana",
+  title: "About | John Doe",
   description:
-    "Muhammad Maulana Firdaussyah a passionate Accounting Information Systems student at Universitas Teknologi Digital Indonesia.",
+    "John Doe is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
 };
 
 export default function AboutPage() {
