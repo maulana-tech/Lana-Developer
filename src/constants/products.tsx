@@ -1,14 +1,20 @@
+import sidefolioAceternity from "public/images/sidefolio-aceternity-2.png";
+import sidefolioAceternity2 from "public/images/sidefolio-aceternity-2.png";
+import sidefolioAlgochurn from "public/images/sidefolio-algochurn.png";
+import sidefolioAlgochurn2 from "public/images/sidefolio-algochurn.png";
+import sidefolioMoonbeam from "public/images/sidefolio-moonbeam.png";
+import sidefolioMoonbeam2 from "public/images/sidefolio-moonbeam-2.png";
+import sidefolioTailwindMasterKit from "public/images/sidefolio-tailwindmasterkit.png";
+import sidefolioTailwindMasterKit2 from "public/images/sidefolio-tailwindmasterkit-2.png";
+
 export const products = [
   {
     href: "https://social-web-lake.vercel.app/",
     title: "Social-Web",
     description:
       "A design and development studio that focuses on building quality apps.",
-    thumbnail: "/images/sidefolio-aceternity-2.png",
-    images: [
-      "/images/sidefolio-aceternity-2.png",
-      "/images/sidefolio-aceternity-2.png"
-    ],
+    thumbnail: sidefolioAceternity,
+    images: [sidefolioAceternity, sidefolioAceternity2],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "aceternity",
     content: (
@@ -17,7 +23,7 @@ export const products = [
         Social-app adalah aplikasi media sosial inovatif yang saya kembangkan menggunakan teknologi 
         Next.js, Tailwind CSS, dan Prisma. Aplikasi ini dirancang untuk menyediakan platform 
         interaktif di mana pengguna dapat terhubung, berbagi konten, dan berinteraksi dalam 
-        komunitas yang dinamis.yang membuat kita lebih mudah berkomunikasi dan berbagi informasi.{" "}
+        komunitas yang dinamis.{" "}
         </p>
         <p>
         Selama pengembangan Social-app, saya menghadapi berbagai tantangan teknis seperti 
@@ -33,11 +39,8 @@ export const products = [
     title: "chat app",
     description:
       "Practice for technical interviews with hands on coding challenges.",
-      thumbnail: "/images/sidefolio-aceternity-2.png",
-      images: [
-        "/images/sidefolio-aceternity-2.png",
-        "/images/sidefolio-aceternity-2.png"
-      ],
+    thumbnail: sidefolioAlgochurn,
+    images: [sidefolioAlgochurn, sidefolioAlgochurn2],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "algochurn",
     content: (
@@ -60,11 +63,8 @@ export const products = [
     title: "movie searching",
     description:
       "Never write from scratch again with Moonbeam, your AI first writing tool",
-      thumbnail: "/images/sidefolio-aceternity-2.png",
-      images: [
-        "/images/sidefolio-aceternity-2.png",
-        "/images/sidefolio-aceternity-2.png"
-      ],
+    thumbnail: sidefolioMoonbeam,
+    images: [sidefolioMoonbeam, sidefolioMoonbeam2],
     stack: ["ReactJs", "Tailwindcss"],
     slug: "moonbeam",
     content: (
@@ -89,11 +89,8 @@ export const products = [
     title: "Doctor Appointment",
     description:
       "A beautiful and comprehensive Tailwind CSS components library for building modern websites and applications.",
-    thumbnail: "/images/sidefolio-aceternity-2.png",
-    images: [
-      "/images/sidefolio-aceternity-2.png",
-      "/images/sidefolio-aceternity-2.png"
-    ],
+    thumbnail: sidefolioTailwindMasterKit,
+    images: [sidefolioTailwindMasterKit, sidefolioTailwindMasterKit2],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "tailwindmasterkit",
     content: (
