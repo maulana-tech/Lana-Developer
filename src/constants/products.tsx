@@ -23,7 +23,7 @@ export const products = [
         Social-app adalah aplikasi media sosial inovatif yang saya kembangkan menggunakan teknologi 
         Next.js, Tailwind CSS, dan Prisma. Aplikasi ini dirancang untuk menyediakan platform 
         interaktif di mana pengguna dapat terhubung, berbagi konten, dan berinteraksi dalam 
-        komunitas yang dinamis.{" "}
+        komunitas yang dinamis. yang dimana pengguna dapat terhubung, berbagi konten, dan berinteraksi dalam komunitas yang dinamis{" "}
         </p>
         <p>
         Selama pengembangan Social-app, saya menghadapi berbagai tantangan teknis seperti 
