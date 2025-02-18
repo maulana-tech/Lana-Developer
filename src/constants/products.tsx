@@ -1,20 +1,14 @@
-import sidefolioAceternity from "public/images/sidefolio-aceternity-2.png";
-import sidefolioAceternity2 from "public/images/sidefolio-aceternity-2.png";
-import sidefolioAlgochurn from "public/images/sidefolio-algochurn.png";
-import sidefolioAlgochurn2 from "public/images/sidefolio-algochurn.png";
-import sidefolioMoonbeam from "public/images/sidefolio-moonbeam.png";
-import sidefolioMoonbeam2 from "public/images/sidefolio-moonbeam-2.png";
-import sidefolioTailwindMasterKit from "public/images/sidefolio-tailwindmasterkit.png";
-import sidefolioTailwindMasterKit2 from "public/images/sidefolio-tailwindmasterkit-2.png";
-
 export const products = [
   {
     href: "https://social-web-lake.vercel.app/",
     title: "Social-Web",
     description:
       "A design and development studio that focuses on building quality apps.",
-    thumbnail: sidefolioAceternity,
-    images: [sidefolioAceternity, sidefolioAceternity2],
+    thumbnail: "/images/sidefolio-aceternity-2.png",
+    images: [
+      "/images/sidefolio-aceternity-2.png",
+      "/images/sidefolio-aceternity-2.png"
+    ],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "aceternity",
     content: (
@@ -39,8 +33,11 @@ export const products = [
     title: "chat app",
     description:
       "Practice for technical interviews with hands on coding challenges.",
-    thumbnail: sidefolioAlgochurn,
-    images: [sidefolioAlgochurn, sidefolioAlgochurn2],
+      thumbnail: "/images/sidefolio-aceternity-2.png",
+      images: [
+        "/images/sidefolio-aceternity-2.png",
+        "/images/sidefolio-aceternity-2.png"
+      ],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "algochurn",
     content: (
@@ -63,8 +60,11 @@ export const products = [
     title: "movie searching",
     description:
       "Never write from scratch again with Moonbeam, your AI first writing tool",
-    thumbnail: sidefolioMoonbeam,
-    images: [sidefolioMoonbeam, sidefolioMoonbeam2],
+      thumbnail: "/images/sidefolio-aceternity-2.png",
+      images: [
+        "/images/sidefolio-aceternity-2.png",
+        "/images/sidefolio-aceternity-2.png"
+      ],
     stack: ["ReactJs", "Tailwindcss"],
     slug: "moonbeam",
     content: (
@@ -89,8 +89,11 @@ export const products = [
     title: "Doctor Appointment",
     description:
       "A beautiful and comprehensive Tailwind CSS components library for building modern websites and applications.",
-    thumbnail: sidefolioTailwindMasterKit,
-    images: [sidefolioTailwindMasterKit, sidefolioTailwindMasterKit2],
+    thumbnail: "/images/sidefolio-aceternity-2.png",
+    images: [
+      "/images/sidefolio-aceternity-2.png",
+      "/images/sidefolio-aceternity-2.png"
+    ],
     stack: ["Nextjs", "Tailwindcss"],
     slug: "tailwindmasterkit",
     content: (
