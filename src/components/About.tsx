@@ -91,12 +91,6 @@ export default function About() {
           and inspire.
         </Paragraph>
         <Paragraph className=" mt-4">
-          What sets me apart is my unwavering appreciation for design. I believe
-          that aesthetics and usability go hand in hand. My eye for awesome
-          design ensures that every project I undertake not only works
-          flawlessly under the hood but also looks stunning on the surface.
-        </Paragraph>
-        <Paragraph className=" mt-4">
           Through this website, I aim to share my insights, experiences, and
           creations with you. Whether you&apos;re a fellow developer seeking
           solutions, a fellow writer in search of inspiration, or simply someone
