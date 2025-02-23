@@ -98,12 +98,6 @@ export default function About() {
           here for you.
         </Paragraph>
         <Paragraph className=" mt-4">
-          Join me on this journey of bytes and narratives, logic and creativity,
-          code and prose. Together, we can explore the boundless possibilities
-          of technology and storytelling, all while reveling in the sheer beauty
-          of thoughtful design.
-        </Paragraph>
-        <Paragraph className=" mt-4">
           Thank you for being here, and I can&apos;t wait to embark on this
           adventure with you.
         </Paragraph>
