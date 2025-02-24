@@ -98,6 +98,13 @@ export default function About() {
           here for you.
         </Paragraph>
         <Paragraph className=" mt-4">
+          Through this website, I aim to share my insights, experiences, and
+          creations with you. Whether you&apos;re a fellow developer seeking
+          solutions, a fellow writer in search of inspiration, or simply someone
+          who appreciates the finer aspects of design, there&apos;s something
+          here for you.
+        </Paragraph>
+        <Paragraph className=" mt-4">
           Thank you for being here, and I can&apos;t wait to embark on this
           adventure with you.
         </Paragraph>
