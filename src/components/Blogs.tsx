@@ -1,4 +1,5 @@
 "use client";
+
 import { Blog } from "@/types/blog";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -9,6 +10,7 @@ import Link from "next/link";
 
 export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
   const [hovered, setHovered] = useState<string | null>(null);
+
   return (
     <div className="max-w-5xl mx-auto my-10">
       {blogs.map((blog, index) => (
@@ -25,7 +27,6 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
           transition={{ duration: 0.2, delay: index * 0.1 }}
         >
           <Link
-            key={`blog-${blog.title}`}
             href={`/blog/${blog.slug}`}
             className="relative my-10 block"
             onMouseEnter={() => setHovered(blog.slug)}
@@ -46,21 +47,19 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
                   }}
                   exit={{
                     opacity: 0,
-
                     scaleX: 0.95,
                     scaleY: 0.95,
                   }}
-                  className="absolute z-0 pointer-events-none bg-gray-50 inset-0 h-full w-full   rounded-md "
+                  className="absolute z-0 pointer-events-none bg-gray-50 inset-0 h-full w-full rounded-md"
                 />
               )}
             </AnimatePresence>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative z-20">
               <Image
                 src={blog.image}
-                alt="thumbnail"
-                height="200"
-                width="200"
-                objectFit="cover"
+                alt={`Thumbnail for ${blog.title}`}
+                height={200}
+                width={200}
                 className="rounded-md object-cover h-40 w-60"
               />
               <div className="flex flex-col col-span-3">
@@ -71,9 +70,9 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
                   {blog.description}
                 </Paragraph>
                 <div className="flex space-x-2 flex-wrap mt-4">
-                  {blog.tags?.map((tag, index) => (
+                  {blog.tags?.map((tag, tagIndex) => (
                     <span
-                      key={`tag-${blog.slug}`}
+                      key={`tag-${blog.slug}-${tagIndex}`}
                       className="text-xs px-1 py-0.5 text-secondary border border-neutral-200 bg-white rounded-md"
                     >
                       {tag}
