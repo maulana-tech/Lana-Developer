@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lana Portfolio Website
 
-## Getting Started
+Portfolio website modern yang dibangun dengan Next.js, menampilkan karya dan keterampilan profesional Lana sebagai Web Developer & Designer.
 
-First, run the development server:
+## Fitur
+
+- **Desain Responsif** - Tampilan yang optimal di berbagai perangkat (desktop, tablet, mobile)
+- **Animasi Modern** - Menggunakan Framer Motion untuk animasi yang menarik dan interaktif
+- **UI Komponen** - Dibangun dengan Shadcn UI dan Tailwind CSS untuk desain yang konsisten
+- **Mode Gelap/Terang** - Dukungan tema gelap dan terang
+- **Halaman About** - Menampilkan informasi tentang keterampilan, pengalaman, dan pendidikan
+- **Portofolio** - Showcase karya dan proyek
+- **Kontak** - Formulir kontak untuk menghubungi
+
+## Teknologi
+
+- [Next.js 15](https://nextjs.org/) - Framework React dengan fitur SSR, SSG, dan routing
+- [React 19](https://react.dev/) - Library JavaScript untuk membangun antarmuka pengguna
+- [Tailwind CSS 4](https://tailwindcss.com/) - Framework CSS utility-first
+- [Shadcn UI](https://ui.shadcn.com/) - Komponen UI yang dapat digunakan kembali
+- [Framer Motion](https://www.framer.com/motion/) - Library animasi untuk React
+- [TypeScript](https://www.typescriptlang.org/) - Superset JavaScript dengan tipe statis
+- [Radix UI](https://www.radix-ui.com/) - Komponen UI headless yang dapat diakses
+- [Tabler Icons](https://tabler-icons.io/) - Set ikon SVG yang indah
+
+## Memulai
+
+Pertama, clone repository ini dan install dependensi:
+
+```bash
+git clone <repository-url>
+cd lana-portfolio
+npm install
+```
+
+Kemudian, jalankan server pengembangan:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) dengan browser Anda untuk melihat hasilnya.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Anda dapat mulai mengedit halaman dengan memodifikasi `src/app/page.tsx`. Halaman akan diperbarui secara otomatis saat Anda mengedit file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Proyek ini menggunakan [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) untuk mengoptimalkan dan memuat font [Geist](https://vercel.com/font), font baru dari Vercel.
 
-## Learn More
+## Struktur Proyek
 
-To learn more about Next.js, take a look at the following resources:
+```
+/public          # Aset statis (gambar, ikon)
+/src
+  /app           # Halaman aplikasi (routing berbasis file)
+  /components    # Komponen React yang dapat digunakan kembali
+    /ui          # Komponen UI dasar (Shadcn UI)
+  /lib           # Utilitas dan fungsi helper
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy di Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cara termudah untuk men-deploy aplikasi Next.js Anda adalah menggunakan [Platform Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) dari pembuat Next.js.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Lihat [dokumentasi deployment Next.js](https://nextjs.org/docs/app/building-your-application/deploying) untuk informasi lebih lanjut.
