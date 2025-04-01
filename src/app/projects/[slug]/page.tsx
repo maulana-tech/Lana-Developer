@@ -1,17 +1,14 @@
 import { Container } from "@/components/Container";
-import { Heading } from "@/components/Heading";
-import { Highlight } from "@/components/Highlight";
-import { Paragraph } from "@/components/Paragraph";
 import { SingleProduct } from "@/components/Product";
-import { Products } from "@/components/Products";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
 import { Metadata } from "next";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 
+// Updated Props type to match Next.js 15 requirements
 type Props = {
   params: { slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -31,20 +28,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function SingleProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default function ProjectPage({ params }: Props) {
   const slug = params.slug;
   const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     redirect("/projects");
   }
+  
+  // TypeScript now knows product is defined at this point
+  const typedProduct = product as Product;
+
   return (
     <Container>
-      <SingleProduct product={product} />
+      <SingleProduct product={typedProduct} />
     </Container>
   );
 }
