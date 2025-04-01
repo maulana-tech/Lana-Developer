@@ -28,7 +28,7 @@ Portfolio website modern yang dibangun dengan Next.js, menampilkan karya dan ket
 Pertama, clone repository ini dan install dependensi:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/maulana-tech/Lana-Developer.git
 cd lana-portfolio
 npm install
 ```
