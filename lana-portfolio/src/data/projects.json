@@ -1,0 +1,64 @@
+{
+  "projects": [
+    {
+      "id": "ecommerce-website",
+      "title": "E-commerce Website",
+      "description": "A modern e-commerce platform with a seamless shopping experience.",
+      "longDescription": "This e-commerce platform features user authentication, product filtering, cart functionality, payment processing with Stripe, and a responsive design that works on all devices.",
+      "tags": ["Next.js", "Tailwind CSS", "Stripe"],
+      "image": "/images/projects/ecommerce.jpg",
+      "images": [
+        "/images/projects/ecommerce-1.jpg",
+        "/images/projects/ecommerce-2.jpg"
+      ],
+      "link": "https://example-ecommerce.com",
+      "github": "https://github.com/username/ecommerce-project",
+      "featured": true
+    },
+    {
+      "id": "portfolio-website",
+      "title": "Portfolio Website",
+      "description": "A creative portfolio website for a photographer showcasing their work.",
+      "longDescription": "This portfolio website includes image galleries with lightbox functionality, smooth animations, contact form, and a custom CMS for easy content updates.",
+      "tags": ["React", "Framer Motion", "GSAP"],
+      "image": "/images/projects/portfolio.jpg",
+      "images": [
+        "/images/projects/portfolio-1.jpg",
+        "/images/projects/portfolio-2.jpg"
+      ],
+      "link": "https://example-portfolio.com",
+      "github": "https://github.com/username/portfolio-project",
+      "featured": true
+    },
+    {
+      "id": "mobile-app",
+      "title": "Fitness Tracker App",
+      "description": "A cross-platform mobile application for tracking workouts and nutrition.",
+      "longDescription": "This fitness tracker app allows users to log workouts, track nutrition, set goals, and view progress over time with interactive charts and statistics.",
+      "tags": ["React Native", "Firebase", "Redux"],
+      "image": "/images/projects/fitness-app.jpg",
+      "images": [
+        "/images/projects/fitness-app-1.jpg",
+        "/images/projects/fitness-app-2.jpg"
+      ],
+      "link": "https://example-fitness-app.com",
+      "github": "https://github.com/username/fitness-app",
+      "featured": false
+    },
+    {
+      "id": "dashboard",
+      "title": "Admin Dashboard",
+      "description": "A comprehensive admin dashboard for managing business operations.",
+      "longDescription": "This admin dashboard provides real-time analytics, user management, content moderation, and customizable reports for business owners and administrators.",
+      "tags": ["Vue.js", "Tailwind CSS", "Chart.js"],
+      "image": "/images/projects/dashboard.jpg",
+      "images": [
+        "/images/projects/dashboard-1.jpg",
+        "/images/projects/dashboard-2.jpg"
+      ],
+      "link": "https://example-dashboard.com",
+      "github": "https://github.com/username/dashboard-project",
+      "featured": false
+    }
+  ]
+}
