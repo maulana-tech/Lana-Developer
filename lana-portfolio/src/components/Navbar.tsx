@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { IconMenu2, IconX } from '@tabler/icons-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -35,6 +36,7 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <ThemeToggle />
             <Button variant="default" size="sm">
               Hire Me
             </Button>
@@ -75,6 +77,10 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className="flex items-center py-2">
+                <span className="text-foreground/80 mr-2">Tema:</span>
+                <ThemeToggle />
+              </li>
               <li>
                 <Button className="w-full" variant="default">
                   Hire Me
