@@ -5,8 +5,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { getFeaturedProjects } from '@/lib/projects';
+import { ProjectsGrid } from '@/components/ProjectsGrid';
 
 export default function Home() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <div className="flex flex-col gap-20">
       {/* Hero Section */}
@@ -118,60 +122,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "E-commerce Website",
-                description: "A modern e-commerce platform with a seamless shopping experience.",
-                tags: ["Next.js", "Tailwind CSS", "Stripe"],
-                image: "/next.svg", // Placeholder, replace with actual project image
-              },
-              {
-                title: "Portfolio Website",
-                description: "A creative portfolio website for a photographer showcasing their work.",
-                tags: ["React", "Framer Motion", "GSAP"],
-                image: "/vercel.svg", // Placeholder, replace with actual project image
-              },
-            ].map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <Card className="overflow-hidden h-full">
-                  <div className="relative aspect-video overflow-hidden bg-secondary">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={600}
-                      height={340}
-                      className="object-contain w-full h-full transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <CardContent className="pt-6">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/portfolio">View Project</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          <ProjectsGrid projects={featuredProjects} />
 
           <div className="text-center mt-12">
             <Button asChild>
