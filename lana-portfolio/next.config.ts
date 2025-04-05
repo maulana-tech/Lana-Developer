@@ -2,9 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  // Add this to ensure proper handling of CSS variables
+  images: {
+    domains: ['placehold.co'],
+  },
+  // Modify the experimental options to properly handle CSS optimization
   experimental: {
-    optimizeCss: true,
+    // Remove optimizeCss or set it to false until the issue is resolved
+    // optimizeCss: true,
   },
 };
 
