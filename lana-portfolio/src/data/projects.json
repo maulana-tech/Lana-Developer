@@ -1,63 +1,228 @@
 {
   "projects": [
     {
-      "id": "ecommerce-website",
-      "title": "E-commerce Website",
-      "description": "A modern e-commerce platform with a seamless shopping experience.",
-      "longDescription": "This e-commerce platform features user authentication, product filtering, cart functionality, payment processing with Stripe, and a responsive design that works on all devices.",
-      "tags": ["Next.js", "Tailwind CSS", "Stripe"],
-      "image": "/images/projects/ecommerce.jpg",
+      "id": "doctor-appointment",
+      "title": "Doctor Appointment App",
+      "description": "A web application for scheduling doctor appointments.",
+      "longDescription": "This React application allows users to schedule, manage, and track doctor appointments. It features a user-friendly interface, calendar integration, and appointment management system.",
+      "tags": ["React", "JavaScript", "CSS"],
+      "image": "/images/projects/doctor-appointment.jpg",
       "images": [
-        "/images/projects/ecommerce-1.jpg",
-        "/images/projects/ecommerce-2.jpg"
+        "/images/projects/doctor-appointment-1.jpg",
+        "/images/projects/doctor-appointment-2.jpg"
       ],
-      "link": "https://example-ecommerce.com",
-      "github": "https://github.com/username/ecommerce-project",
+      "link": "",
+      "github": "https://github.com/maulana-tech/DoctorAppointment-App.git",
       "featured": true
     },
     {
-      "id": "portfolio-website",
-      "title": "Portfolio Website",
-      "description": "A creative portfolio website for a photographer showcasing their work.",
-      "longDescription": "This portfolio website includes image galleries with lightbox functionality, smooth animations, contact form, and a custom CMS for easy content updates.",
-      "tags": ["React", "Framer Motion", "GSAP"],
-      "image": "/images/projects/portfolio.jpg",
+      "id": "car-showcase",
+      "title": "Car Showcase Web",
+      "description": "A modern web application for showcasing cars and their specifications.",
+      "longDescription": "Built with Next.js, this car showcase platform features detailed car listings, search functionality, filtering options, and responsive design for optimal viewing on all devices.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/car-showcase.jpg",
       "images": [
-        "/images/projects/portfolio-1.jpg",
-        "/images/projects/portfolio-2.jpg"
+        "/images/projects/car-showcase-1.jpg",
+        "/images/projects/car-showcase-2.jpg"
       ],
-      "link": "https://example-portfolio.com",
-      "github": "https://github.com/username/portfolio-project",
+      "link": "",
+      "github": "https://github.com/maulana-tech/Car-Showcase-App.git",
       "featured": true
     },
     {
-      "id": "mobile-app",
-      "title": "Fitness Tracker App",
-      "description": "A cross-platform mobile application for tracking workouts and nutrition.",
-      "longDescription": "This fitness tracker app allows users to log workouts, track nutrition, set goals, and view progress over time with interactive charts and statistics.",
-      "tags": ["React Native", "Firebase", "Redux"],
-      "image": "/images/projects/fitness-app.jpg",
+      "id": "event-platform",
+      "title": "Event Platform Web",
+      "description": "A comprehensive platform for managing and attending events.",
+      "longDescription": "This Next.js application provides event creation, registration, ticketing, and management features. It includes user profiles, event discovery, and interactive event schedules.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/event-platform.jpg",
       "images": [
-        "/images/projects/fitness-app-1.jpg",
-        "/images/projects/fitness-app-2.jpg"
+        "/images/projects/event-platform-1.jpg",
+        "/images/projects/event-platform-2.jpg"
       ],
-      "link": "https://example-fitness-app.com",
-      "github": "https://github.com/username/fitness-app",
+      "link": "",
+      "github": "https://github.com/maulana-tech/Event-Platform-App.git",
       "featured": false
     },
     {
-      "id": "dashboard",
-      "title": "Admin Dashboard",
-      "description": "A comprehensive admin dashboard for managing business operations.",
-      "longDescription": "This admin dashboard provides real-time analytics, user management, content moderation, and customizable reports for business owners and administrators.",
-      "tags": ["Vue.js", "Tailwind CSS", "Chart.js"],
-      "image": "/images/projects/dashboard.jpg",
+      "id": "marketplace",
+      "title": "MarketPlace Web",
+      "description": "A full-featured e-commerce marketplace built with Laravel 10.",
+      "longDescription": "This marketplace platform allows vendors to create stores, list products, and process orders. It includes user authentication, product search, shopping cart, payment integration, and order management.",
+      "tags": ["Laravel 10", "PHP", "MySQL", "Bootstrap"],
+      "image": "/images/projects/marketplace.jpg",
       "images": [
-        "/images/projects/dashboard-1.jpg",
-        "/images/projects/dashboard-2.jpg"
+        "/images/projects/marketplace-1.jpg",
+        "/images/projects/marketplace-2.jpg"
       ],
-      "link": "https://example-dashboard.com",
-      "github": "https://github.com/username/dashboard-project",
+      "link": "",
+      "github": "https://github.com/maulana-tech/marketplace-project.git",
+      "featured": true
+    },
+    {
+      "id": "social-web",
+      "title": "Social Web",
+      "description": "A social networking platform built with Next.js.",
+      "longDescription": "This social media application features user profiles, posts, comments, likes, friend connections, and real-time notifications. It provides a responsive interface for seamless interaction across devices.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/social-web.jpg",
+      "images": [
+        "/images/projects/social-web-1.jpg",
+        "/images/projects/social-web-2.jpg"
+      ],
+      "link": "https://social-web-lake.vercel.app/",
+      "github": "",
+      "featured": true
+    },
+    {
+      "id": "movie-website",
+      "title": "Movie Website",
+      "description": "A movie browsing platform using external movie API.",
+      "longDescription": "This React application allows users to browse movies, view details, search for titles, and discover new releases. It integrates with a movie API to provide up-to-date information and media content.",
+      "tags": ["React", "JavaScript", "API Integration"],
+      "image": "/images/projects/movie-website.jpg",
+      "images": [
+        "/images/projects/movie-website-1.jpg",
+        "/images/projects/movie-website-2.jpg"
+      ],
+      "link": "",
+      "github": "https://github.com/maulana-tech/newReact-01.git",
+      "featured": false
+    },
+    {
+      "id": "chat-app",
+      "title": "Chat App",
+      "description": "Real-time chat application with MERN stack and Socket.io.",
+      "longDescription": "This full-stack chat application features real-time messaging, user authentication, message history, and responsive design. Built with MongoDB, Express, React, Node.js, and Socket.io for real-time communication.",
+      "tags": ["MERN Stack", "Socket.io", "Tailwind CSS", "Daisy UI"],
+      "image": "/images/projects/chat-app.jpg",
+      "images": [
+        "/images/projects/chat-app-1.jpg",
+        "/images/projects/chat-app-2.jpg"
+      ],
+      "link": "",
+      "github": "https://github.com/maulana-tech/Chat-App.git",
+      "featured": false
+    },
+    {
+      "id": "budget-web",
+      "title": "Budget Web",
+      "description": "A personal finance and budget tracking application.",
+      "longDescription": "This Next.js application helps users track income, expenses, and savings goals. It includes budget categories, financial reports, and visualizations to help users manage their finances effectively.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/budget-web.jpg",
+      "images": [
+        "/images/projects/budget-web-1.jpg",
+        "/images/projects/budget-web-2.jpg"
+      ],
+      "link": "",
+      "github": "https://github.com/maulana-tech/budget-website.git",
+      "featured": false
+    },
+    {
+      "id": "desa-web",
+      "title": "Desa Web",
+      "description": "A village information and management website.",
+      "longDescription": "This React application serves as an information portal and management system for a village. It includes news, events, public services information, and administrative features.",
+      "tags": ["React", "JavaScript", "CSS"],
+      "image": "/images/projects/desa-web.jpg",
+      "images": [
+        "/images/projects/desa-web-1.jpg",
+        "/images/projects/desa-web-2.jpg"
+      ],
+      "link": "https://desa-wotawati.vercel.app/",
+      "github": "",
+      "featured": false
+    },
+    {
+      "id": "himasia-web",
+      "title": "HIMASIA Web",
+      "description": "Website for the Accounting Information Systems Student Association.",
+      "longDescription": "This Next.js website serves as the official platform for HIMASIA (Himpunan Mahasiswa Sistem Informasi Akuntansi). It features organization information, events, member profiles, and resources for students.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/himasia-web.jpg",
+      "images": [
+        "/images/projects/himasia-web-1.jpg",
+        "/images/projects/himasia-web-2.jpg"
+      ],
+      "link": "https://web-himasia.vercel.app/",
+      "github": "",
+      "featured": false
+    },
+    {
+      "id": "template-provider",
+      "title": "Template Provider Web",
+      "description": "A platform offering web templates and themes for developers.",
+      "longDescription": "This Next.js application showcases and distributes web templates and themes. It includes template previews, documentation, and download functionality. (Ongoing project)",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/template-provider.jpg",
+      "images": [
+        "/images/projects/template-provider-1.jpg",
+        "/images/projects/template-provider-2.jpg"
+      ],
+      "link": "https://web-template-sepia.vercel.app/",
+      "github": "",
+      "featured": false
+    },
+    {
+      "id": "linktree-clone",
+      "title": "Linktree Clone",
+      "description": "A personal link aggregator similar to Linktree.",
+      "longDescription": "This Next.js application serves as a personal link hub, allowing users to share multiple links through a single page. It features a clean, customizable interface and responsive design.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/linktree-clone.jpg",
+      "images": [
+        "/images/projects/linktree-clone-1.jpg",
+        "/images/projects/linktree-clone-2.jpg"
+      ],
+      "link": "https://maulana-linktree.vercel.app/",
+      "github": "",
+      "featured": false
+    },
+    {
+      "id": "company-profile-nextjs",
+      "title": "Company Profile - Next.js",
+      "description": "A modern company profile website built with Next.js.",
+      "longDescription": "This Next.js application serves as a professional company profile, featuring about us, services, portfolio, team, and contact sections. It includes smooth animations and responsive design.",
+      "tags": ["Next.js", "React", "Tailwind CSS"],
+      "image": "/images/projects/company-profile-nextjs.jpg",
+      "images": [
+        "/images/projects/company-profile-nextjs-1.jpg",
+        "/images/projects/company-profile-nextjs-2.jpg"
+      ],
+      "link": "https://foryou-tech.vercel.app/",
+      "github": "",
+      "featured": false
+    },
+    {
+      "id": "company-profile-laravel",
+      "title": "Company Profile - Laravel 11",
+      "description": "A comprehensive company profile website built with Laravel 11.",
+      "longDescription": "This Laravel application provides a complete company profile solution with content management, blog functionality, service listings, and contact forms. It features a modern design and admin dashboard.",
+      "tags": ["Laravel 11", "PHP", "MySQL", "Bootstrap"],
+      "image": "/images/projects/company-profile-laravel.jpg",
+      "images": [
+        "/images/projects/company-profile-laravel-1.jpg",
+        "/images/projects/company-profile-laravel-2.jpg"
+      ],
+      "link": "",
+      "github": "https://github.com/maulana-tech/Maulana-app.git",
+      "featured": false
+    },
+    {
+      "id": "netflix-clone",
+      "title": "Netflix Clone",
+      "description": "A visual clone of the Netflix landing page.",
+      "longDescription": "This project recreates the Netflix landing page using HTML, CSS, and JavaScript. It features responsive design, carousel functionality, and visual elements similar to the original Netflix interface.",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "image": "/images/projects/netflix-clone.jpg",
+      "images": [
+        "/images/projects/netflix-clone-1.jpg",
+        "/images/projects/netflix-clone-2.jpg"
+      ],
+      "link": "https://my-netflix-clone-fawn.vercel.app/",
+      "github": "",
       "featured": false
     }
   ]
