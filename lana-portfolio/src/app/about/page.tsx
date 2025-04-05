@@ -4,7 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { IconBrandReact, IconBrandNextjs, IconBrandTailwind, IconBrandFigma, IconBrandJavascript, IconBrandTypescript } from '@tabler/icons-react';
+import { IconBrandReact, IconBrandNextjs, IconBrandTailwind, IconBrandFigma, IconBrandJavascript, IconBrandTypescript, IconCertificate } from '@tabler/icons-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getAllCertificates } from '@/data/certificates';
 
 export default function AboutPage() {
   const skills = [
@@ -49,6 +51,8 @@ export default function AboutPage() {
       period: '2010 - 2014',
     },
   ];
+
+  const certificates = getAllCertificates();
 
   return (
     <div className="flex flex-col gap-20 py-10">
@@ -250,6 +254,116 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Certificate Section - Add this before the CTA section */}
+      <section className="py-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold mb-4">My Certificates</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Professional certifications and courses I've completed to enhance my skills.
+              </p>
+            </motion.div>
+
+            <Tabs defaultValue="grid" className="w-full">
+              <div className="flex justify-center mb-8">
+                <TabsList>
+                  <TabsTrigger value="grid">Grid View</TabsTrigger>
+                  <TabsTrigger value="carousel">Carousel View</TabsTrigger>
+                </TabsList>
+              </div>
+              
+              <TabsContent value="grid" className="w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {certificates.map((cert, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.03 }}
+                      className="h-full"
+                    >
+                      <Card className="overflow-hidden h-full">
+                        <div className="relative aspect-video overflow-hidden bg-secondary">
+                          <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
+                            <IconCertificate size={48} />
+                          </div>
+                          {/* Uncomment when you have actual certificate images */}
+                          {/* <Image
+                            src={cert.image}
+                            alt={cert.title}
+                            width={600}
+                            height={340}
+                            className="object-cover w-full h-full"
+                          /> */}
+                        </div>
+                        <CardContent className="pt-6">
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-xl font-semibold">{cert.title}</h3>
+                            <span className="text-sm text-muted-foreground">{cert.date}</span>
+                          </div>
+                          <p className="text-primary mb-2">{cert.issuer}</p>
+                          <p className="text-muted-foreground mb-4">{cert.description}</p>
+                          <Button variant="outline" size="sm" asChild>
+                            <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                              View Certificate
+                            </a>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="carousel" className="w-full">
+                <div className="relative overflow-hidden py-4">
+                  <div className="flex space-x-6 animate-scroll">
+                    {[...certificates, ...certificates].map((cert, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="min-w-[300px] md:min-w-[400px]"
+                      >
+                        <Card className="overflow-hidden h-full">
+                          <div className="relative aspect-video overflow-hidden bg-secondary">
+                            <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
+                              <IconCertificate size={48} />
+                            </div>
+                          </div>
+                          <CardContent className="pt-6">
+                            <div className="flex justify-between items-start mb-2">
+                              <h3 className="text-xl font-semibold">{cert.title}</h3>
+                              <span className="text-sm text-muted-foreground">{cert.date}</span>
+                            </div>
+                            <p className="text-primary mb-2">{cert.issuer}</p>
+                            <Button variant="outline" size="sm" asChild className="mt-4">
+                              <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                                View Certificate
+                              </a>
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-10">
         <div className="container mx-auto px-4">
@@ -273,3 +387,38 @@ export default function AboutPage() {
     </div>
   );
 }
+
+const certificates = [
+  {
+    title: "Advanced React Development",
+    issuer: "Meta",
+    date: "2023",
+    image: "/images/certificates/react-certificate.jpg", // Add actual certificate images
+    description: "Comprehensive course covering advanced React concepts, hooks, and state management.",
+    link: "#"
+  },
+  {
+    title: "Next.js Certification",
+    issuer: "Vercel",
+    date: "2023",
+    image: "/images/certificates/nextjs-certificate.jpg",
+    description: "Professional certification in Next.js development, covering SSR, SSG, and app router.",
+    link: "#"
+  },
+  {
+    title: "UI/UX Design Fundamentals",
+    issuer: "Interaction Design Foundation",
+    date: "2022",
+    image: "/images/certificates/uiux-certificate.jpg",
+    description: "Certification in user interface and experience design principles and methodologies.",
+    link: "#"
+  },
+  {
+    title: "Full Stack Web Development",
+    issuer: "Udemy",
+    date: "2022",
+    image: "/images/certificates/fullstack-certificate.jpg",
+    description: "Comprehensive course covering both frontend and backend web development technologies.",
+    link: "#"
+  }
+];

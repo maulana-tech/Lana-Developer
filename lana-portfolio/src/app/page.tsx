@@ -7,9 +7,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { getFeaturedProjects } from '@/lib/projects';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
+import { IconBrandGithub, IconExternalLink, IconCertificate } from '@tabler/icons-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getAllCertificates } from '@/data/certificates';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
+  const certificates = getAllCertificates();
 
   return (
     <div className="flex flex-col gap-20">
@@ -128,6 +132,115 @@ export default function Home() {
             <Button asChild>
               <Link href="/portfolio">View All Projects</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificate Section */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold mb-4">My Certificates</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Professional certifications that showcase my expertise and continuous learning.
+              </p>
+            </motion.div>
+
+            <div className="relative overflow-hidden py-4">
+              <div className="flex space-x-6 animate-scroll">
+                {[...certificates, ...certificates].map((cert, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="min-w-[300px] md:min-w-[400px]"
+                  >
+                    <Card className="overflow-hidden h-full">
+                      <div className="relative aspect-video overflow-hidden bg-secondary">
+                        <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
+                          <IconCertificate size={48} />
+                        </div>
+                      </div>
+                      <CardContent className="pt-6">
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="text-xl font-semibold">{cert.title}</h3>
+                          <span className="text-sm text-muted-foreground">{cert.date}</span>
+                        </div>
+                        <p className="text-primary mb-2">{cert.issuer}</p>
+                        <div className="flex justify-between items-center mt-4">
+                          <Button variant="outline" size="sm" asChild>
+                            <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                              View Certificate
+                            </a>
+                          </Button>
+                          <Button variant="ghost" size="sm" asChild>
+                            <Link href="/about">
+                              See All
+                            </Link>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Services</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              I offer a range of services to help you build and grow your online presence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Web Development",
+                description: "I build responsive, fast, and user-friendly websites using modern technologies.",
+                icon: "🖥️",
+              },
+              {
+                title: "UI/UX Design",
+                description: "I create beautiful and intuitive user interfaces that provide excellent user experiences.",
+                icon: "🎨",
+              },
+              {
+                title: "Mobile Development",
+                description: "I develop cross-platform mobile applications that work seamlessly on all devices.",
+                icon: "📱",
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full">
+                  <CardContent className="pt-6">
+                    <div className="text-4xl mb-4">{service.icon}</div>
+                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
