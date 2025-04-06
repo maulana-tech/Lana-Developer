@@ -4,10 +4,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { TechCategory, getTechStackCategories } from '@/data/techStack';
+import { TechCategory, techStackData } from '@/data/techStack';
 
 export function TechStack() {
-  const categories = getTechStackCategories();
+  const categories = techStackData;
   
   return (
     <Tabs defaultValue={categories[0].id} className="max-w-4xl mx-auto">
@@ -35,9 +35,9 @@ export function TechStack() {
                 <Card className="h-full overflow-hidden border-2 hover:border-primary transition-colors duration-300">
                   <CardContent className="p-4 flex flex-col items-center justify-center text-center">
                     <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                        {tech.icon ? (
-                          <Image src={tech.icon} alt={tech.name} width={30} height={30} />
+                      <div className="w-full h-full flex items-center justify-center">
+                        {tech.svg ? (
+                          <img src={tech.svg} alt={tech.name} className="max-w-full max-h-full" />
                         ) : (
                           <span className="text-xl" style={{ color: tech.color }}>
                             {tech.name.charAt(0)}
