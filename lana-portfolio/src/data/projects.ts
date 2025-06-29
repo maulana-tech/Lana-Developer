@@ -1,5 +1,6 @@
-{
-  "projects": [
+import { Project } from "@/lib/projects"
+
+export const projects: Project[] = [
     {
     id: "doctor-appointment",
     title: "Doctor Appointment App",
@@ -496,26 +497,3 @@
     featured: false,
   },
 ]
-
-// Helper function to get projects by type
-export const getProjectsByType = (type) => {
-  return repositories.filter((project) => project.type === type)
-}
-
-// Helper function to get all available types
-export const getProjectTypes = () => {
-  const types = [...new Set(repositories.map((project) => project.type))]
-  return types.sort()
-}
-
-// Helper function to get featured projects
-export const getFeaturedProjects = () => {
-  return repositories.filter((project) => project.featured)
-}
-
-// Helper function to get projects by tag
-export const getProjectsByTag = (tag) => {
-  return repositories.filter((project) =>
-    project.tags.some((projectTag) => projectTag.toLowerCase().includes(tag.toLowerCase())),
-  )
-}

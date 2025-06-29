@@ -1,4 +1,4 @@
-import projectsData from '@/data/projects.json';
+import { projects } from '@/data/projects';
 
 export type Project = {
   id: string;
@@ -6,6 +6,7 @@ export type Project = {
   description: string;
   longDescription: string;
   tags: string[];
+  type: string;
   image: string;
   images: string[];
   link: string;
@@ -14,13 +15,27 @@ export type Project = {
 };
 
 export function getAllProjects(): Project[] {
-  return projectsData.projects;
+  return projects
 }
 
+
 export function getFeaturedProjects(): Project[] {
-  return projectsData.projects.filter(project => project.featured);
+  return projects.filter(project => project.featured);
 }
 
 export function getProjectById(id: string): Project | undefined {
-  return projectsData.projects.find(project => project.id === id);
+  return projects.find(project => project.id === id);
+}
+
+export function getProjectsByTag(tag: string): Project[] {
+  return projects.filter(project => project.tags.includes(tag));
+}
+
+export function getProjectsByType(type: string): Project[] {
+  return projects.filter(project => project.type === type);
+}
+
+export const getProjectTypes = () => {
+  const types = [...new Set(projects.map((project) => project.type))]
+  return types.sort()
 }
