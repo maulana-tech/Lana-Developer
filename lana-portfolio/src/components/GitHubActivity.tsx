@@ -139,12 +139,12 @@ export function GitHubActivity() {
                 <div className="flex text-xs text-muted-foreground justify-end pr-2 mb-1">
                   <div className="grid grid-cols-7 gap-1 w-full max-w-[730px]">
                     <div>Mon</div>
+                    <div>Tue</div>
                     <div>Wed</div>
-                    <div></div>
+                    <div>Thu</div>
                     <div>Fri</div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div>Sat</div>
+                    <div>Sun</div>
                   </div>
                 </div>
                 <div className="flex gap-1">
