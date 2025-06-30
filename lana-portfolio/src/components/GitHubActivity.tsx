@@ -17,89 +17,51 @@ export function GitHubActivity() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // In a real implementation, you would fetch this data from GitHub API
-    // For demo purposes, we'll generate random contribution data
-    const generateDemoData = () => {
+    const fetchActivity = async () => {
       setIsLoading(true);
-      
       try {
-        // Generate last 365 days of mock contribution data
-        const today = new Date();
-        const mockData: ContributionDay[] = [];
-        
-        for (let i = 364; i >= 0; i--) {
-          const date = new Date(today);
-          date.setDate(date.getDate() - i);
-          
-          // Random contribution count (weighted to have more zeros and fewer high counts)
-          const rand = Math.random();
-          let count = 0;
-          let level: 0 | 1 | 2 | 3 | 4 = 0;
-          
-          if (rand > 0.6) {
-            if (rand > 0.9) {
-              count = Math.floor(Math.random() * 10) + 10;
-              level = 4;
-            } else if (rand > 0.85) {
-              count = Math.floor(Math.random() * 5) + 5;
-              level = 3;
-            } else if (rand > 0.75) {
-              count = Math.floor(Math.random() * 3) + 2;
-              level = 2;
-            } else {
-              count = 1;
-              level = 1;
-            }
-          }
-          
-          mockData.push({
-            date: date.toISOString().split('T')[0],
-            count,
-            level
-          });
+        const response = await fetch('/api/github-activity');
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.statusText}`);
         }
-        
-        setContributions(mockData);
-        setIsLoading(false);
+        const data = await response.json();
+        // Assuming the API returns data in the ContributionDay[] format
+        // You might need to transform the data from the API to match this format
+        setContributions(data);
       } catch (err) {
-        setError('Failed to load contribution data');
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      } finally {
         setIsLoading(false);
       }
     };
-    
-    generateDemoData();
-    
-    // In a real implementation, you would fetch from GitHub API like this:
-    // fetch('https://api.github.com/users/maulana-tech/contributions')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setContributions(data);
-    //     setIsLoading(false);
-    //   })
-    //   .catch(err => {
-    //     setError('Failed to load contribution data');
-    //     setIsLoading(false);
-    //   });
+
+    fetchActivity();
   }, []);
 
   // Group contributions by week for display
   const contributionWeeks = [];
-  for (let i = 0; i < contributions.length; i += 7) {
-    contributionWeeks.push(contributions.slice(i, i + 7));
+  if (contributions) {
+    for (let i = 0; i < contributions.length; i += 7) {
+      contributionWeeks.push(contributions.slice(i, i + 7));
+    }
   }
 
+
   // Get total contributions for the year
-  const totalContributions = contributions.reduce((sum, day) => sum + day.count, 0);
+  const totalContributions = contributions?.reduce((sum, day) => sum + day.count, 0) ?? 0;
 
   // Get current streak
   let currentStreak = 0;
-  for (let i = contributions.length - 1; i >= 0; i--) {
-    if (contributions[i].count > 0) {
-      currentStreak++;
-    } else {
-      break;
+  if (contributions) {
+    for (let i = contributions.length - 1; i >= 0; i--) {
+      if (contributions[i].count > 0) {
+        currentStreak++;
+      } else {
+        break;
+      }
     }
   }
+
 
   return (
     <motion.div
