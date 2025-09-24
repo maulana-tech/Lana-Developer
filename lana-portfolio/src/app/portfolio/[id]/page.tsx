@@ -1,6 +1,6 @@
 'use client';
 
-import { getProjectById, Project } from '@/lib/projects';
+import { getProjectByIdSync, Project } from '@/lib/projects';
 import { Button } from '@/components/ui/button';
 import { IconBrandGithub, IconExternalLink, IconArrowLeft } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -16,7 +16,7 @@ export default function ProjectDetailPage() {
   
   useEffect(() => {
     const id = params.id as string;
-    const projectData = getProjectById(id);
+    const projectData = getProjectByIdSync(id);
     
     if (projectData) {
       setProject(projectData);
