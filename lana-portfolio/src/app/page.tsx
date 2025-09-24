@@ -5,17 +5,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { getFeaturedProjects } from '@/lib/projects';
+import { getFeaturedProjectsSync } from '@/lib/projects';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { IconBrandGithub, IconExternalLink, IconCertificate } from '@tabler/icons-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllCertificates } from '@/data/certificates';
+import { getAllCertificatesSync } from '@/lib/certificates';
 import { GitHubActivity } from '@/components/GitHubActivity';
 import { TechStack } from '@/components/TechStack';
 
 export default function Home() {
-  const featuredProjects = getFeaturedProjects();
-  const certificates = getAllCertificates();
+  const featuredProjects = getFeaturedProjectsSync();
+  const certificates = getAllCertificatesSync();
 
   return (
     <div className="flex flex-col gap-20">
@@ -142,9 +142,9 @@ export default function Home() {
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">GitHub Contributions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">GitHub Stats</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              My open source activity and coding contributions over the past year.
+              A comprehensive overview of my GitHub activity, coding statistics, and programming languages.
             </p>
           </div>
           

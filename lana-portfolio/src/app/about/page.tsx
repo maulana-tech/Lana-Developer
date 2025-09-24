@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandReact, IconBrandNextjs, IconBrandTailwind, IconBrandFigma, IconBrandJavascript, IconBrandTypescript, IconCertificate } from '@tabler/icons-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllCertificates } from '@/data/certificates';
+import { getAllCertificatesSync } from '@/lib/certificates';
 
 export default function AboutPage() {
   const skills = [
@@ -52,7 +52,7 @@ export default function AboutPage() {
     },
   ];
 
-  const certificates = getAllCertificates();
+  const certificates = getAllCertificatesSync();
 
   return (
     <div className="flex flex-col gap-20 py-10">
@@ -387,38 +387,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-const certificates = [
-  {
-    title: "Advanced React Development",
-    issuer: "Meta",
-    date: "2023",
-    image: "/images/certificates/react-certificate.jpg", // Add actual certificate images
-    description: "Comprehensive course covering advanced React concepts, hooks, and state management.",
-    link: "#"
-  },
-  {
-    title: "Next.js Certification",
-    issuer: "Vercel",
-    date: "2023",
-    image: "/images/certificates/nextjs-certificate.jpg",
-    description: "Professional certification in Next.js development, covering SSR, SSG, and app router.",
-    link: "#"
-  },
-  {
-    title: "UI/UX Design Fundamentals",
-    issuer: "Interaction Design Foundation",
-    date: "2022",
-    image: "/images/certificates/uiux-certificate.jpg",
-    description: "Certification in user interface and experience design principles and methodologies.",
-    link: "#"
-  },
-  {
-    title: "Full Stack Web Development",
-    issuer: "Udemy",
-    date: "2022",
-    image: "/images/certificates/fullstack-certificate.jpg",
-    description: "Comprehensive course covering both frontend and backend web development technologies.",
-    link: "#"
-  }
-];

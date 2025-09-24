@@ -1,11 +1,11 @@
 'use client';
 
-import { getAllProjects } from '@/lib/projects';
+import { getAllProjectsSync } from '@/lib/projects';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { motion } from 'framer-motion';
 
 export default function PortfolioPage() {
-  const projects = getAllProjects();
+  const projects = getAllProjectsSync();
 
   return (
     <div className="py-20">

@@ -3,7 +3,7 @@
 import { Project } from '@/lib/projects';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
@@ -24,12 +24,13 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     >
       <Card className="overflow-hidden h-full">
         <div className="relative aspect-video overflow-hidden bg-secondary">
-          <Image
+          <ImageWithFallback
             src={project.image}
             alt={project.title}
             width={600}
             height={340}
             className="object-cover w-full h-full transition-transform group-hover:scale-105"
+            fallbackSrc="https://placehold.co/600x340/e5e7eb/6b7280?text=Project+Image"
           />
         </div>
         <CardContent className="pt-6">
