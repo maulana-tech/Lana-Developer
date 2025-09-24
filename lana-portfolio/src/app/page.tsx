@@ -9,7 +9,7 @@ import { getFeaturedProjectsSync } from '@/lib/projects';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { IconBrandGithub, IconExternalLink, IconCertificate } from '@tabler/icons-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllCertificatesSync } from '@/data/certificates';
+import { getAllCertificatesSync } from '@/lib/certificates';
 import { GitHubActivity } from '@/components/GitHubActivity';
 import { TechStack } from '@/components/TechStack';
 

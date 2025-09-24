@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandReact, IconBrandNextjs, IconBrandTailwind, IconBrandFigma, IconBrandJavascript, IconBrandTypescript, IconCertificate } from '@tabler/icons-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllCertificatesSync } from '@/data/certificates';
+import { getAllCertificatesSync } from '@/lib/certificates';
 
 export default function AboutPage() {
   const skills = [
