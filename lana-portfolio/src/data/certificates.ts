@@ -42,6 +42,20 @@ export const certificates: Certificate[] = [
   }
 ];
 
-export function getAllCertificates(): Certificate[] {
+// Import database functions
+import { getAllCertificatesFromDB } from '@/lib/database/certificates';
+
+// Flag to control data source
+const USE_DATABASE = process.env.NEXT_PUBLIC_USE_DATABASE === 'true';
+
+export async function getAllCertificates(): Promise<Certificate[]> {
+  if (USE_DATABASE) {
+    return await getAllCertificatesFromDB();
+  }
+  return certificates;
+}
+
+// Synchronous version for backward compatibility (using static data)
+export function getAllCertificatesSync(): Certificate[] {
   return certificates;
 }
