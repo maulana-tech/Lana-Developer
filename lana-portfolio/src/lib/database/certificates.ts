@@ -1,5 +1,5 @@
 import { supabase, TABLES, DatabaseCertificate } from '../supabase';
-import { Certificate } from '@/data/certificates';
+import { Certificate } from '@/types/certificates';
 
 // Convert database certificate to app certificate format
 export function convertDatabaseCertificate(dbCert: DatabaseCertificate): Certificate {
