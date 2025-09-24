@@ -132,21 +132,21 @@ export async function getProjectsByTag(tag: string): Promise<Project[]> {
   if (USE_DATABASE) {
     return await getProjectsByTagFromDB(tag);
   }
-  return projects.filter(project => project.tags.includes(tag));
+  return mockProjects.filter(project => project.tags.includes(tag));
 }
 
 export async function getProjectsByType(type: string): Promise<Project[]> {
   if (USE_DATABASE) {
     return await getProjectsByTypeFromDB(type);
   }
-  return projects.filter(project => project.type === type);
+  return mockProjects.filter(project => project.type === type);
 }
 
 export async function getProjectTypes(): Promise<string[]> {
   if (USE_DATABASE) {
     return await getProjectTypesFromDB();
   }
-  const types = [...new Set(projects.map((project) => project.type))];
+  const types = [...new Set(mockProjects.map((project) => project.type))];
   return types.sort();
 }
 

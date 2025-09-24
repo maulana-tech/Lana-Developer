@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Certificate } from '@/data/certificates';
+import { Certificate } from '@/types/certificates';
 import { Project } from '@/lib/projects';
 import {
   getAllCertificatesFromDB,
@@ -21,7 +21,7 @@ import {
   updateProject,
   deleteProject,
 } from '@/lib/database/projects';
-import { IconPlus, IconEdit, IconTrash, IconSave, IconX } from '@tabler/icons-react';
+import { IconPlus, IconEdit, IconTrash, IconX, IconDeviceFloppy } from '@tabler/icons-react';
 
 interface CertificateWithId extends Certificate {
   id: string;
@@ -363,7 +363,7 @@ function CertificateForm({
           </div>
           <div className="flex space-x-2">
             <Button type="submit">
-              <IconSave className="w-4 h-4 mr-2" />
+              <IconDeviceFloppy className="w-4 h-4 mr-2" />
               Save
             </Button>
             <Button type="button" variant="outline" onClick={onCancel}>
@@ -506,7 +506,7 @@ function ProjectForm({
           </div>
           <div className="flex space-x-2">
             <Button type="submit">
-              <IconSave className="w-4 h-4 mr-2" />
+              <IconDeviceFloppy className="w-4 h-4 mr-2" />
               Save
             </Button>
             <Button type="button" variant="outline" onClick={onCancel}>
