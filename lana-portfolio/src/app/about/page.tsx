@@ -1,12 +1,87 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { IconBrandReact, IconBrandNextjs, IconBrandTailwind, IconBrandFigma, IconBrandJavascript, IconBrandTypescript, IconCertificate } from '@tabler/icons-react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  IconBrandReact, 
+  IconBrandNextjs, 
+  IconBrandTailwind, 
+  IconBrandFigma, 
+  IconBrandJavascript, 
+  IconBrandTypescript, 
+  IconCertificate,
+  IconCode,
+  IconPalette,
+  IconRocket,
+  IconTrophy,
+  IconSchool,
+  IconBriefcase,
+  IconStar,
+  IconEye,
+  IconDownload,
+  IconMapPin,
+  IconCalendar,
+  IconMail,
+  IconSparkles
+} from '@tabler/icons-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { getAllCertificatesSync } from '@/lib/certificates';
+import { useRef, useEffect, useState } from 'react';
+
+// Animated Counter Component
+function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number; duration?: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    
+    const startTime = Date.now();
+    const timer = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeOutCubic * end));
+      
+      if (progress >= 1) {
+        clearInterval(timer);
+        setCount(end);
+      }
+    }, 16);
+    
+    return () => clearInterval(timer);
+  }, [isInView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+// Bento Grid Item Component
+function BentoItem({ 
+  children, 
+  className = '', 
+  delay = 0 
+}: { 
+  children: React.ReactNode; 
+  className?: string; 
+  delay?: number; 
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true }}
+      className={`rounded-2xl border bg-card text-card-foreground shadow-sm ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function AboutPage() {
   const skills = [
@@ -55,165 +130,343 @@ export default function AboutPage() {
   const certificates = getAllCertificatesSync();
 
   return (
-    <div className="flex flex-col gap-20 py-10">
-      {/* About Hero Section */}
-      <section className="py-10">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              I'm a passionate web developer and designer with over 5 years of experience creating beautiful digital experiences.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section with Gradient */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border bg-muted/50 text-muted-foreground">
+                <IconSparkles className="w-4 h-4" />
+                <span className="text-sm font-medium">About Lana</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Creative Developer
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                I craft digital experiences that blend beautiful design with powerful functionality, 
+                transforming ideas into exceptional web solutions.
+              </p>
+            </motion.div>
+            
+            {/* Stats Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+            >
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  <AnimatedCounter end={5} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Years Experience</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  <AnimatedCounter end={50} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Projects Completed</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  <AnimatedCounter end={12} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Technologies</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  <AnimatedCounter end={98} suffix="%" />
+                </div>
+                <p className="text-muted-foreground">Client Satisfaction</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Bio Section */}
-      <section className="py-10">
+      {/* Bento Grid Section */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="aspect-square bg-secondary rounded-full max-w-md mx-auto flex items-center justify-center overflow-hidden"
-            >
-              <span className="text-8xl font-bold text-secondary-foreground">L</span>
-              {/* Replace with actual image when available */}
-              {/* <Image src="/profile.jpg" alt="Lana's profile" fill className="object-cover" /> */}
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col gap-6"
-            >
-              <h2 className="text-3xl font-bold">Hello, I'm Lana</h2>
-              <p className="text-muted-foreground">
-                I'm a web developer and designer based in Jakarta, Indonesia. I specialize in creating modern, responsive websites and applications that provide excellent user experiences.
-              </p>
-              <p className="text-muted-foreground">
-                With a background in both design and development, I bring a unique perspective to every project, ensuring that the final product is not only visually appealing but also functional and user-friendly.
-              </p>
-              <p className="text-muted-foreground">
-                When I'm not coding, you can find me exploring new design trends, learning new technologies, or enjoying outdoor activities.
-              </p>
-              <div className="flex gap-4 mt-2">
-                <Button asChild>
-                  <Link href="/contact">Contact Me</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/portfolio">View My Work</Link>
-                </Button>
-              </div>
-            </motion.div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+              {/* Main Profile Card */}
+              <BentoItem className="md:col-span-8 p-8" delay={0}>
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="relative">
+                    <div className="w-32 h-32 bg-gradient-to-br from-foreground to-muted-foreground rounded-3xl flex items-center justify-center text-background text-4xl font-bold">
+                      L
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-background" />
+                  </div>
+                  <div className="flex-1 text-center md:text-left">
+                    <h2 className="text-3xl font-bold mb-4">Hello, I'm Lana 👋</h2>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      I'm a passionate web developer and designer based in Jakarta, Indonesia. 
+                      I specialize in creating modern, responsive websites and applications that provide exceptional user experiences.
+                    </p>
+                    <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                      <Button asChild size="lg">
+                        <Link href="/contact">
+                          <IconMail className="w-4 h-4 mr-2" />
+                          Contact Me
+                        </Link>
+                      </Button>
+                      <Button variant="outline" size="lg" asChild>
+                        <Link href="/portfolio">
+                          <IconEye className="w-4 h-4 mr-2" />
+                          View My Work
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </BentoItem>
+
+              {/* Location Card */}
+              <BentoItem className="md:col-span-4 p-6" delay={0.1}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <IconMapPin className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Based in</h3>
+                  <p className="text-muted-foreground">Jakarta, Indonesia</p>
+                  <p className="text-xs text-muted-foreground mt-1">UTC+7</p>
+                </div>
+              </BentoItem>
+
+              {/* Experience Card */}
+              <BentoItem className="md:col-span-3 p-6" delay={0.2}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <IconBriefcase className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Experience</h3>
+                  <p className="text-2xl font-bold text-primary">5+ Years</p>
+                </div>
+              </BentoItem>
+
+              {/* Specialty Card */}
+              <BentoItem className="md:col-span-5 p-6" delay={0.3}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <IconCode className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Specialty</h3>
+                  <p className="text-muted-foreground">Full-Stack Development</p>
+                  <div className="flex flex-wrap gap-2 justify-center mt-3">
+                    <Badge variant="secondary">React</Badge>
+                    <Badge variant="secondary">Next.js</Badge>
+                    <Badge variant="secondary">TypeScript</Badge>
+                  </div>
+                </div>
+              </BentoItem>
+
+              {/* Availability Card */}
+              <BentoItem className="md:col-span-4 p-6" delay={0.4}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <IconCalendar className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Availability</h3>
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full" />
+                    <p className="text-muted-foreground">Available for projects</p>
+                  </div>
+                </div>
+              </BentoItem>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section className="py-10 bg-secondary/30">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold mb-4">My Skills</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Here are some of the technologies and tools I work with on a daily basis.
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border bg-background text-muted-foreground">
+                <IconRocket className="w-4 h-4" />
+                <span className="text-sm font-medium">Technical Skills</span>
+              </div>
+              <h2 className="text-4xl font-bold mb-4">My Expertise</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Technologies and tools I use to bring ideas to life
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group"
                 >
-                  <Card>
+                  <Card className="h-full border-2 hover:border-primary/20 transition-all duration-300">
                     <CardContent className="p-6">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="bg-primary/10 p-2 rounded-full text-primary">
-                          {skill.icon}
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                            {skill.icon}
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg">{skill.name}</h3>
+                            <p className="text-sm text-muted-foreground">Proficiency</p>
+                          </div>
                         </div>
-                        <h3 className="text-lg font-semibold">{skill.name}</h3>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-primary">{skill.level}%</div>
+                        </div>
                       </div>
-                      <div className="w-full bg-secondary rounded-full h-2.5">
-                        <div 
-                          className="bg-primary h-2.5 rounded-full" 
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
+                      <div className="space-y-2">
+                        <Progress value={skill.level} className="h-3" />
+                        <div className="flex justify-between text-xs text-muted-foreground">
+                          <span>Beginner</span>
+                          <span>Expert</span>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
                 </motion.div>
               ))}
             </div>
+            
+            {/* Additional Skills */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-12 text-center"
+            >
+              <h3 className="text-lg font-semibold mb-4">Additional Technologies</h3>
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS', 
+                  'Git', 'Webpack', 'Sass', 'Redux', 'GraphQL', 'Jest'
+                ].map((tech, index) => (
+                  <Badge key={index} variant="outline" className="px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-10">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold mb-4">Work Experience</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                My professional journey in the world of web development and design.
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border bg-muted/50 text-muted-foreground">
+                <IconBriefcase className="w-4 h-4" />
+                <span className="text-sm font-medium">Career Journey</span>
+              </div>
+              <h2 className="text-4xl font-bold mb-4">Work Experience</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                My professional journey in web development and design
               </p>
             </motion.div>
 
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                          <h3 className="text-xl font-bold">{exp.title}</h3>
-                          <p className="text-primary">{exp.company}</p>
-                        </div>
-                        <div className="text-muted-foreground mt-2 md:mt-0">{exp.period}</div>
-                      </div>
-                      <p className="text-muted-foreground">{exp.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+            {/* Timeline */}
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border md:transform md:-translate-x-0.5" />
+              
+              <div className="space-y-12">
+                {experiences.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-8`}
+                  >
+                    {/* Timeline dot */}
+                    <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background transform md:-translate-x-2 z-10" />
+                    
+                    {/* Content */}
+                    <div className={`w-full md:w-5/12 ml-16 md:ml-0`}>
+                      <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+                        <CardHeader>
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <CardTitle className="text-xl mb-1">{exp.title}</CardTitle>
+                              <p className="text-primary font-medium">{exp.company}</p>
+                            </div>
+                            <Badge variant="secondary" className="ml-4">{exp.period}</Badge>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="pt-0">
+                          <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
+            
+            {/* Achievement Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-16 grid grid-cols-3 gap-8 text-center"
+            >
+              <div>
+                <div className="text-3xl font-bold mb-2">
+                  <AnimatedCounter end={50} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Projects Delivered</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-2">
+                  <AnimatedCounter end={25} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Happy Clients</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-2">
+                  <AnimatedCounter end={5} suffix="+" />
+                </div>
+                <p className="text-muted-foreground">Years Experience</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="py-10 bg-secondary/30">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -221,29 +474,42 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl font-bold mb-4">Education</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                My academic background and qualifications.
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border bg-background text-muted-foreground">
+                <IconSchool className="w-4 h-4" />
+                <span className="text-sm font-medium">Education</span>
+              </div>
+              <h2 className="text-4xl font-bold mb-4">Academic Background</h2>
+              <p className="text-xl text-muted-foreground">
+                Continuous learning and formal education journey
               </p>
             </motion.div>
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                          <h3 className="text-xl font-bold">{edu.degree}</h3>
-                          <p className="text-primary">{edu.institution}</p>
+                  <Card className="h-full group hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-8">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                          <IconSchool className="w-6 h-6 text-primary" />
                         </div>
-                        <div className="text-muted-foreground mt-2 md:mt-0">{edu.period}</div>
+                        <div className="flex-1">
+                          <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                            {edu.degree}
+                          </h3>
+                          <p className="text-primary font-medium mb-2">{edu.institution}</p>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <IconCalendar className="w-4 h-4" />
+                            <span>{edu.period}</span>
+                          </div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -254,134 +520,67 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Certificate Section - Add this before the CTA section */}
-      <section className="py-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold mb-4">My Certificates</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Professional certifications and courses I've completed to enhance my skills.
-              </p>
-            </motion.div>
-
-            <Tabs defaultValue="grid" className="w-full">
-              <div className="flex justify-center mb-8">
-                <TabsList>
-                  <TabsTrigger value="grid">Grid View</TabsTrigger>
-                  <TabsTrigger value="carousel">Carousel View</TabsTrigger>
-                </TabsList>
-              </div>
-              
-              <TabsContent value="grid" className="w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {certificates.map((cert, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.03 }}
-                      className="h-full"
-                    >
-                      <Card className="overflow-hidden h-full">
-                        <div className="relative aspect-video overflow-hidden bg-secondary">
-                          <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
-                            <IconCertificate size={48} />
-                          </div>
-                          {/* Uncomment when you have actual certificate images */}
-                          {/* <Image
-                            src={cert.image}
-                            alt={cert.title}
-                            width={600}
-                            height={340}
-                            className="object-cover w-full h-full"
-                          /> */}
-                        </div>
-                        <CardContent className="pt-6">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-xl font-semibold">{cert.title}</h3>
-                            <span className="text-sm text-muted-foreground">{cert.date}</span>
-                          </div>
-                          <p className="text-primary mb-2">{cert.issuer}</p>
-                          <p className="text-muted-foreground mb-4">{cert.description}</p>
-                          <Button variant="outline" size="sm" asChild>
-                            <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                              View Certificate
-                            </a>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="carousel" className="w-full">
-                <div className="relative overflow-hidden py-4">
-                  <div className="flex space-x-6 animate-scroll">
-                    {[...certificates, ...certificates].map((cert, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="min-w-[300px] md:min-w-[400px]"
-                      >
-                        <Card className="overflow-hidden h-full">
-                          <div className="relative aspect-video overflow-hidden bg-secondary">
-                            <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
-                              <IconCertificate size={48} />
-                            </div>
-                          </div>
-                          <CardContent className="pt-6">
-                            <div className="flex justify-between items-start mb-2">
-                              <h3 className="text-xl font-semibold">{cert.title}</h3>
-                              <span className="text-sm text-muted-foreground">{cert.date}</span>
-                            </div>
-                            <p className="text-primary mb-2">{cert.issuer}</p>
-                            <Button variant="outline" size="sm" asChild className="mt-4">
-                              <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                                View Certificate
-                              </a>
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-10">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">Interested in working together?</h2>
-            <p className="text-muted-foreground mb-8">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/contact">Get In Touch</Link>
-            </Button>
-          </motion.div>
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl" />
+              
+              <Card className="relative border-2 border-primary/20">
+                <CardContent className="p-12 text-center">
+                  <div className="mb-8">
+                    <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                      <IconRocket className="w-10 h-10 text-primary" />
+                    </div>
+                    <h2 className="text-4xl font-bold mb-4">Ready to work together?</h2>
+                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+                      I'm always excited to collaborate on new projects and bring creative ideas to life. 
+                      Let's create something amazing together!
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <Button size="lg" asChild className="min-w-[200px]">
+                      <Link href="/contact">
+                        <IconMail className="w-5 h-5 mr-2" />
+                        Get In Touch
+                      </Link>
+                    </Button>
+                    <Button variant="outline" size="lg" asChild className="min-w-[200px]">
+                      <Link href="/portfolio">
+                        <IconEye className="w-5 h-5 mr-2" />
+                        View My Work
+                      </Link>
+                    </Button>
+                  </div>
+                  
+                  {/* Contact info */}
+                  <div className="flex flex-wrap justify-center gap-8 mt-12 pt-8 border-t">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <IconMail className="w-4 h-4" />
+                      <span className="text-sm">Available for projects</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <IconMapPin className="w-4 h-4" />
+                      <span className="text-sm">Jakarta, Indonesia</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <div className="w-2 h-2 bg-green-500 rounded-full" />
+                      <span className="text-sm">Usually responds within 24h</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>
