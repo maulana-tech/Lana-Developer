@@ -162,16 +162,16 @@ export default function Home() {
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
                     <span className="block">Hi, I'm</span>
                     <span className="block bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-                      Lana
+                      Maulana Firdaussyah
                     </span>
                     <span className="block text-4xl md:text-5xl lg:text-6xl text-muted-foreground font-medium mt-2">
-                      Creative Developer
+                      Fullstack Developer
                     </span>
                   </h1>
                   
                   <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-                    I craft exceptional digital experiences that blend stunning design 
-                    with powerful functionality, turning your vision into reality.
+                    I craft innovative web applications with React, Next.js, and AI/ML technologies, 
+                    building user-focused solutions that drive real business impact.
                   </p>
                 </motion.div>
                 
@@ -184,19 +184,19 @@ export default function Home() {
                 >
                   <div className="text-center">
                     <div className="text-3xl md:text-4xl font-bold mb-1">
-                      <AnimatedCounter end={50} suffix="+" />
+                      <AnimatedCounter end={15} suffix="+" />
                     </div>
                     <p className="text-sm text-muted-foreground">Projects</p>
                   </div>
                   <div className="text-center border-x border-border px-4">
                     <div className="text-3xl md:text-4xl font-bold mb-1">
-                      <AnimatedCounter end={5} suffix="+" />
+                      <AnimatedCounter end={2} suffix="+" />
                     </div>
                     <p className="text-sm text-muted-foreground">Years Exp.</p>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl md:text-4xl font-bold mb-1">
-                      <AnimatedCounter end={98} suffix="%" />
+                      <AnimatedCounter end={100} suffix="%" />
                     </div>
                     <p className="text-sm text-muted-foreground">Satisfaction</p>
                   </div>
@@ -215,6 +215,12 @@ export default function Home() {
                       View My Work
                       <IconArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild className="group">
+                    <a href="/my-resume.pdf" download="Muhammad-Maulana-Firdaussyah-Resume.pdf">
+                      <IconDownload className="w-5 h-5 mr-2" />
+                      Download Resume
+                    </a>
                   </Button>
                   <Button variant="outline" size="lg" asChild className="group">
                     <Link href="/contact">
@@ -238,7 +244,7 @@ export default function Home() {
                   <div className="relative w-80 h-80 mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-foreground/5 rounded-full" />
                     <div className="absolute inset-4 bg-gradient-to-br from-foreground to-muted-foreground rounded-full flex items-center justify-center text-background text-6xl font-bold">
-                      L
+                      MF
                     </div>
                     <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-green-500 rounded-full border-4 border-background flex items-center justify-center">
                       <IconSparkles className="w-8 h-8 text-white" />
