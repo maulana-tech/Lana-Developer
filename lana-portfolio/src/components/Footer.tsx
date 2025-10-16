@@ -8,19 +8,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="flex flex-col space-y-4">
-            <h3 className="text-xl font-bold">Lana</h3>
-            <p className="text-muted-foreground">Creating beautiful digital experiences with passion and precision.</p>
+            <h3 className="text-xl font-bold">Muhammad Maulana Firdaussyah</h3>
+            <p className="text-muted-foreground">Fullstack Web Developer specializing in React, Next.js, and AI/ML technologies.</p>
             <div className="flex space-x-4">
-              <Link href="https://github.com" target="_blank" aria-label="GitHub" className="text-foreground/70 hover:text-foreground transition-colors">
+              <Link href="https://github.com/maulana-tech" target="_blank" aria-label="GitHub" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconBrandGithub size={20} />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn" className="text-foreground/70 hover:text-foreground transition-colors">
+              <Link href="https://www.linkedin.com/in/muhammad-firdaussyah-083362293" target="_blank" aria-label="LinkedIn" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconBrandLinkedin size={20} />
               </Link>
-              <Link href="https://twitter.com" target="_blank" aria-label="Twitter" className="text-foreground/70 hover:text-foreground transition-colors">
+              <Link href="https://linktr.ee/maulanafirdaussyah" target="_blank" aria-label="Linktree" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconBrandTwitter size={20} />
               </Link>
-              <Link href="mailto:contact@example.com" aria-label="Email" className="text-foreground/70 hover:text-foreground transition-colors">
+              <Link href="mailto:firdaussyah03@gmail.com" aria-label="Email" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconMail size={20} />
               </Link>
             </div>
@@ -57,15 +57,15 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold">Contact</h3>
             <address className="not-italic text-muted-foreground">
-              <p>Jakarta, Indonesia</p>
-              <p>contact@example.com</p>
-              <p>+62 123 456 7890</p>
+              <p>Yogyakarta, Indonesia</p>
+              <p>firdaussyah03@gmail.com</p>
+              <p>developerlana0@gmail.com</p>
             </address>
           </div>
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Lana. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Muhammad Maulana Firdaussyah. All rights reserved.</p>
         </div>
       </div>
     </footer>
