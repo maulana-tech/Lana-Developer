@@ -87,43 +87,49 @@ export default function AboutPage() {
   const skills = [
     { name: 'React', icon: <IconBrandReact size={24} />, level: 90 },
     { name: 'Next.js', icon: <IconBrandNextjs size={24} />, level: 85 },
-    { name: 'Tailwind CSS', icon: <IconBrandTailwind size={24} />, level: 95 },
-    { name: 'Figma', icon: <IconBrandFigma size={24} />, level: 80 },
     { name: 'JavaScript', icon: <IconBrandJavascript size={24} />, level: 90 },
-    { name: 'TypeScript', icon: <IconBrandTypescript size={24} />, level: 85 },
+    { name: 'Tailwind CSS', icon: <IconBrandTailwind size={24} />, level: 95 },
+    { name: 'TypeScript', icon: <IconBrandTypescript size={24} />, level: 80 },
+    { name: 'Python', icon: <IconBrandJavascript size={24} />, level: 75 },
   ];
 
   const experiences = [
     {
-      title: 'Senior Frontend Developer',
-      company: 'Tech Innovations Inc.',
-      period: '2021 - Present',
-      description: 'Leading the frontend development team, implementing modern UI/UX designs, and optimizing web performance.',
+      title: 'Student Developer',
+      company: 'Google Developer Student Club (GDSC)',
+      period: 'Nov 2023 - Oct 2025',
+      description: 'Developed responsive web applications with React, Next.js, and Tailwind CSS, increasing community engagement for 50+ members. Contributed to DevEdHub, implementing dynamic UI with Shadcn UI, improving accessibility by 20%.',
     },
     {
-      title: 'Web Developer',
-      company: 'Digital Solutions Agency',
-      period: '2018 - 2021',
-      description: 'Developed responsive websites and web applications for various clients across different industries.',
+      title: 'Student Developer',
+      company: 'GDG on Campus Widyatama University',
+      period: 'Sep 2024 - Oct 2025',
+      description: 'Created scalable web components using Next.js and Supabase for user authentication and real-time updates. Mentored peers in coding best practices, boosting team productivity by 15%.',
     },
     {
-      title: 'UI/UX Designer',
-      company: 'Creative Studio',
-      period: '2016 - 2018',
-      description: 'Designed user interfaces and experiences for web and mobile applications, focusing on usability and aesthetics.',
+      title: 'Freelance Web Developer',
+      company: 'Self-Employed',
+      period: 'Jan 2024 - Present',
+      description: 'Developed Rehearse AI web app with AI-driven features using React, Next.js, and Tailwind CSS. Built personal finance management app using PHP, SQL, HTML, and JavaScript, improving client efficiency by 30%.',
+    },
+    {
+      title: 'Chairman of HIMASIA',
+      company: 'Universitas Teknologi Digital Indonesia',
+      period: 'Aug 2023 - Oct 2025',
+      description: 'Led a 50+ member student organization, organizing tech workshops and increasing participation by 25%. Coordinated cross-functional teams for community projects, enhancing collaboration skills.',
     },
   ];
 
   const education = [
     {
-      degree: 'Master of Computer Science',
-      institution: 'University of Technology',
-      period: '2014 - 2016',
+      degree: 'D3, Accounting Information Systems',
+      institution: 'Universitas Teknologi Digital Indonesia',
+      period: 'Aug 2023 - Present',
     },
     {
-      degree: 'Bachelor of Design',
-      institution: 'Art & Design Institute',
-      period: '2010 - 2014',
+      degree: 'Associate of Arts and Sciences (AAS), Desain Pemodelan dan Informasi Bangunan',
+      institution: 'SMK Muhammadiyah 3 Yogyakarta',
+      period: 'Aug 2018 - Jul 2021',
     },
   ];
 
@@ -147,11 +153,11 @@ export default function AboutPage() {
                 <span className="text-sm font-medium">About Lana</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Creative Developer
+                Fullstack Developer
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                I craft digital experiences that blend beautiful design with powerful functionality, 
-                transforming ideas into exceptional web solutions.
+                A dedicated Fullstack Web Developer and Accounting Information Systems student at Universitas Teknologi Digital Indonesia, 
+                passionate about building innovative, user-focused web applications and exploring AI/ML technologies.
               </p>
             </motion.div>
             
@@ -164,25 +170,25 @@ export default function AboutPage() {
             >
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={5} suffix="+" />
+                  <AnimatedCounter end={2} suffix="+" />
                 </div>
                 <p className="text-muted-foreground">Years Experience</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={50} suffix="+" />
+                  <AnimatedCounter end={15} suffix="+" />
                 </div>
                 <p className="text-muted-foreground">Projects Completed</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={12} suffix="+" />
+                  <AnimatedCounter end={15} suffix="+" />
                 </div>
                 <p className="text-muted-foreground">Technologies</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">
-                  <AnimatedCounter end={98} suffix="%" />
+                  <AnimatedCounter end={100} suffix="%" />
                 </div>
                 <p className="text-muted-foreground">Client Satisfaction</p>
               </div>
@@ -200,16 +206,16 @@ export default function AboutPage() {
               <BentoItem className="md:col-span-8 p-8" delay={0}>
                 <div className="flex flex-col md:flex-row items-center gap-8">
                   <div className="relative">
-                    <div className="w-32 h-32 bg-gradient-to-br from-foreground to-muted-foreground rounded-3xl flex items-center justify-center text-background text-4xl font-bold">
-                      L
+                    <div className="w-32 h-32 bg-gradient-to-br from-foreground to-muted-foreground rounded-3xl flex items-center justify-center text-background text-3xl font-bold">
+                      MF
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-background" />
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-3xl font-bold mb-4">Hello, I'm Lana 👋</h2>
+                    <h2 className="text-3xl font-bold mb-4">Hello, I'm Muhammad Maulana Firdaussyah 👋</h2>
                     <p className="text-muted-foreground mb-6 leading-relaxed">
-                      I'm a passionate web developer and designer based in Jakarta, Indonesia. 
-                      I specialize in creating modern, responsive websites and applications that provide exceptional user experiences.
+                      I'm a dedicated Fullstack Web Developer and Accounting Information Systems student based in Yogyakarta, Indonesia. 
+                      I specialize in React, Next.js, JavaScript, Tailwind CSS, and SQL, with over 1.5 years of experience building innovative web applications.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                       <Button asChild size="lg">
@@ -217,6 +223,12 @@ export default function AboutPage() {
                           <IconMail className="w-4 h-4 mr-2" />
                           Contact Me
                         </Link>
+                      </Button>
+                      <Button variant="outline" size="lg" asChild>
+                        <a href="/my-resume.pdf" download="Muhammad-Maulana-Firdaussyah-Resume.pdf">
+                          <IconDownload className="w-4 h-4 mr-2" />
+                          Download Resume
+                        </a>
                       </Button>
                       <Button variant="outline" size="lg" asChild>
                         <Link href="/portfolio">
@@ -236,7 +248,7 @@ export default function AboutPage() {
                     <IconMapPin className="w-8 h-8" />
                   </div>
                   <h3 className="font-semibold mb-2">Based in</h3>
-                  <p className="text-muted-foreground">Jakarta, Indonesia</p>
+                  <p className="text-muted-foreground">Yogyakarta, Indonesia</p>
                   <p className="text-xs text-muted-foreground mt-1">UTC+7</p>
                 </div>
               </BentoItem>
@@ -248,7 +260,7 @@ export default function AboutPage() {
                     <IconBriefcase className="w-8 h-8" />
                   </div>
                   <h3 className="font-semibold mb-2">Experience</h3>
-                  <p className="text-2xl font-bold text-primary">5+ Years</p>
+                  <p className="text-2xl font-bold text-primary">2+ Years</p>
                 </div>
               </BentoItem>
 
@@ -259,11 +271,11 @@ export default function AboutPage() {
                     <IconCode className="w-8 h-8" />
                   </div>
                   <h3 className="font-semibold mb-2">Specialty</h3>
-                  <p className="text-muted-foreground">Full-Stack Development</p>
+                  <p className="text-muted-foreground">Full-Stack Development & AI/ML</p>
                   <div className="flex flex-wrap gap-2 justify-center mt-3">
                     <Badge variant="secondary">React</Badge>
                     <Badge variant="secondary">Next.js</Badge>
-                    <Badge variant="secondary">TypeScript</Badge>
+                    <Badge variant="secondary">Supabase</Badge>
                   </div>
                 </div>
               </BentoItem>
@@ -277,7 +289,7 @@ export default function AboutPage() {
                   <h3 className="font-semibold mb-2">Availability</h3>
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full" />
-                    <p className="text-muted-foreground">Available for projects</p>
+                    <p className="text-muted-foreground">20-30 hours/week</p>
                   </div>
                 </div>
               </BentoItem>
@@ -358,8 +370,8 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold mb-4">Additional Technologies</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {[
-                  'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS', 
-                  'Git', 'Webpack', 'Sass', 'Redux', 'GraphQL', 'Jest'
+                  'Node.js', 'PHP', 'MySQL', 'Supabase', 'Git', 'Framer Motion', 
+                  'Shadcn UI', 'HTML', 'CSS', 'SQL', 'Python', 'AI/ML'
                 ].map((tech, index) => (
                   <Badge key={index} variant="outline" className="px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default">
                     {tech}
@@ -442,19 +454,19 @@ export default function AboutPage() {
             >
               <div>
                 <div className="text-3xl font-bold mb-2">
-                  <AnimatedCounter end={50} suffix="+" />
+                  <AnimatedCounter end={15} suffix="+" />
                 </div>
                 <p className="text-muted-foreground">Projects Delivered</p>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-2">
-                  <AnimatedCounter end={25} suffix="+" />
+                  <AnimatedCounter end={100} suffix="+" />
                 </div>
-                <p className="text-muted-foreground">Happy Clients</p>
+                <p className="text-muted-foreground">Beta Testers</p>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-2">
-                  <AnimatedCounter end={5} suffix="+" />
+                  <AnimatedCounter end={2} suffix="+" />
                 </div>
                 <p className="text-muted-foreground">Years Experience</p>
               </div>
@@ -555,6 +567,12 @@ export default function AboutPage() {
                       </Link>
                     </Button>
                     <Button variant="outline" size="lg" asChild className="min-w-[200px]">
+                      <a href="/my-resume.pdf" download="Muhammad-Maulana-Firdaussyah-Resume.pdf">
+                        <IconDownload className="w-5 h-5 mr-2" />
+                        Download Resume
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="lg" asChild className="min-w-[200px]">
                       <Link href="/portfolio">
                         <IconEye className="w-5 h-5 mr-2" />
                         View My Work
@@ -566,11 +584,11 @@ export default function AboutPage() {
                   <div className="flex flex-wrap justify-center gap-8 mt-12 pt-8 border-t">
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <IconMail className="w-4 h-4" />
-                      <span className="text-sm">Available for projects</span>
+                      <span className="text-sm">20-30 hours/week</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <IconMapPin className="w-4 h-4" />
-                      <span className="text-sm">Jakarta, Indonesia</span>
+                      <span className="text-sm">Yogyakarta, Indonesia</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <div className="w-2 h-2 bg-green-500 rounded-full" />
