@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">Lana</Link>
+          <Link href="/" className="text-xl font-bold">Maulana F</Link>
           
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center space-x-8">
@@ -37,8 +37,15 @@ export default function Navbar() {
               </li>
             ))}
             <ThemeToggle />
-            <Button variant="default" size="sm">
-              Hire Me
+            <Button variant="outline" size="sm" asChild>
+              <a href="/my-resume.pdf" download="Muhammad-Maulana-Firdaussyah-Resume.pdf">
+                Resume
+              </a>
+            </Button>
+            <Button variant="default" size="sm" asChild>
+              <Link href="/contact">
+                Hire Me
+              </Link>
             </Button>
           </ul>
 
@@ -82,8 +89,17 @@ export default function Navbar() {
                 <ThemeToggle />
               </li>
               <li>
-                <Button className="w-full" variant="default">
-                  Hire Me
+                <Button className="w-full" variant="outline" asChild>
+                  <a href="/my-resume.pdf" download="Muhammad-Maulana-Firdaussyah-Resume.pdf">
+                    Download Resume
+                  </a>
+                </Button>
+              </li>
+              <li>
+                <Button className="w-full" variant="default" asChild>
+                  <Link href="/contact">
+                    Hire Me
+                  </Link>
                 </Button>
               </li>
             </ul>
