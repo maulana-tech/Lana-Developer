@@ -184,7 +184,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium">Location</h3>
-                    <p className="text-muted-foreground">Jakarta, Indonesia</p>
+                    <p className="text-muted-foreground">Yogyakarta, Indonesia</p>
                   </div>
                 </div>
                 
@@ -230,7 +230,7 @@ export default function ContactPage() {
                 
                 <motion.a
                   whileHover={{ y: -5 }}
-                  href="https://id.linkedin.com/in/muhammad-firdaussyah-083362293" 
+                  href="https://www.linkedin.com/in/muhammad-firdaussyah-083362293" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-secondary p-4 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
