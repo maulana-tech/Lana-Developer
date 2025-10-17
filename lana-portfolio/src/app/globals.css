@@ -116,8 +116,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Performance optimizations */
+  img, video {
+    content-visibility: auto;
   }
 }
 
@@ -185,4 +194,31 @@
 /* Add hover pause effect */
 .animate-scroll:hover {
   animation-play-state: paused;
+}
+
+/* Performance optimizations for animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize scroll performance */
+.overflow-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
