@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { IconEye, IconMail, IconArrowRight } from '@tabler/icons-react';
 import { memo } from 'react';
-import type { Project } from '@/types/project';
+import type { Project } from '@/lib/projects';
 
 interface FeaturedProjectsSectionProps {
   projects: Project[];

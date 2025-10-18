@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconCertificate, IconExternalLink, IconArrowRight } from '@tabler/icons-react';
 import { memo } from 'react';
-import type { Certificate } from '@/types/certificate';
+import type { Certificate } from '@/types/certificates';
 
 interface CertificatesSectionProps {
   certificates: Certificate[];
