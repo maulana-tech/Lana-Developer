@@ -1,9 +1,15 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { motion } from 'framer-motion';
-import { IconBrandGithub, IconCode, IconGitCommit, IconStar, IconGitPullRequest } from '@tabler/icons-react';
+import dynamic from 'next/dynamic';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
+
+// Dynamically import icons
+const IconBrandGithub = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconBrandGithub })));
+const IconCode = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconCode })));
+const IconGitCommit = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconGitCommit })));
+const IconStar = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconStar })));
+const IconGitPullRequest = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconGitPullRequest })));
 
 export function GitHubActivity() {
   const username = 'maulana-tech';
@@ -35,11 +41,9 @@ export function GitHubActivity() {
     <div className="space-y-8">
       {/* Stats Overview Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
+        <div 
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card className="text-center">
             <CardContent className="pt-6 pb-4">
@@ -50,13 +54,11 @@ export function GitHubActivity() {
               <p className="text-sm text-muted-foreground">Total Commits</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
+        <div
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card className="text-center">
             <CardContent className="pt-6 pb-4">
@@ -67,13 +69,11 @@ export function GitHubActivity() {
               <p className="text-sm text-muted-foreground">Pull Requests</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
+        <div
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card className="text-center">
             <CardContent className="pt-6 pb-4">
@@ -84,13 +84,11 @@ export function GitHubActivity() {
               <p className="text-sm text-muted-foreground">Total Stars</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
+        <div
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card className="text-center">
             <CardContent className="pt-6 pb-4">
@@ -101,17 +99,15 @@ export function GitHubActivity() {
               <p className="text-sm text-muted-foreground">Repositories</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
 
       {/* Main GitHub Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* GitHub Stats Card */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          viewport={{ once: true }}
+        <div
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card>
             <CardContent className="pt-6">
@@ -137,14 +133,12 @@ export function GitHubActivity() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Top Languages Card */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: true }}
+        <div
+          className="animate-fade-in-up"
+          style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}
         >
           <Card>
             <CardContent className="pt-6">
@@ -180,16 +174,13 @@ export function GitHubActivity() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
 
       {/* GitHub Profile Link */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        viewport={{ once: true }}
-        className="flex justify-center"
+      <div
+        className="flex justify-center animate-fade-in-up"
+        style={{ animationDelay: '0.7s', opacity: 0, animationFillMode: 'forwards' }}
       >
         <a
           href={`https://github.com/${username}`}
@@ -200,7 +191,7 @@ export function GitHubActivity() {
           <IconBrandGithub size={20} className="mr-2" />
           View Full GitHub Profile
         </a>
-      </motion.div>
+      </div>
     </div>
   );
 }

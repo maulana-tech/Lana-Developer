@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.shields.io',
+        port: '',
+        pathname: '/**',
+      },
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -34,12 +40,60 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
-  // Modify the experimental options to properly handle CSS optimization
+  // Experimental optimizations
   experimental: {
-    // Remove optimizeCss or set it to false until the issue is resolved
-    // optimizeCss: true,
-    optimizePackageImports: ['@tabler/icons-react', 'framer-motion', 'lucide-react'],
+    optimizePackageImports: ['@tabler/icons-react', 'framer-motion', 'lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+  },
+  // Webpack optimizations
+  webpack: (config, { isServer }) => {
+    // Optimize bundle splitting
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            default: false,
+            vendors: false,
+            // Vendor chunk for react ecosystem
+            react: {
+              name: 'react-vendor',
+              test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+              priority: 40,
+              reuseExistingChunk: true,
+            },
+            // Framer Motion in separate chunk (large library)
+            framer: {
+              name: 'framer-motion',
+              test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+              priority: 35,
+              reuseExistingChunk: true,
+            },
+            // UI libraries in separate chunk
+            ui: {
+              name: 'ui-vendor',
+              test: /[\\/]node_modules[\\/](@radix-ui|@tabler|lucide-react)[\\/]/,
+              priority: 30,
+              reuseExistingChunk: true,
+            },
+            // Common vendor chunk
+            commons: {
+              name: 'commons',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 20,
+              minChunks: 2,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+
+    // Tree-shaking optimizations
+    config.optimization.usedExports = true;
+    config.optimization.sideEffects = true;
+
+    return config;
   },
 };
 

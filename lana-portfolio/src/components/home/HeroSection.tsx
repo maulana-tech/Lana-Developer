@@ -2,18 +2,20 @@
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  IconEye,
-  IconDownload,
-  IconMail,
-  IconArrowRight,
-  IconCode,
-  IconPalette,
-  IconDeviceMobile,
-  IconSparkles
-} from '@tabler/icons-react';
 import { useRef, useEffect, useState, memo } from 'react';
+
+// Lazy load framer-motion for non-critical animations
+import dynamic from 'next/dynamic';
+
+// Lazy load icons (tree-shaken)
+const IconEye = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconEye })));
+const IconDownload = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconDownload })));
+const IconMail = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconMail })));
+const IconArrowRight = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconArrowRight })));
+const IconCode = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconCode })));
+const IconPalette = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconPalette })));
+const IconDeviceMobile = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconDeviceMobile })));
+const IconSparkles = dynamic(() => import('@tabler/icons-react').then(mod => ({ default: mod.IconSparkles })));
 
 // Animated Counter Component - Memoized
 const AnimatedCounter = memo(function AnimatedCounter({ 
@@ -63,7 +65,7 @@ const AnimatedCounter = memo(function AnimatedCounter({
   return <span ref={ref}>{count}{suffix}</span>;
 });
 
-// Floating Element Component - Optimized
+// Floating Element Component - CSS-based animation
 const FloatingElement = memo(function FloatingElement({ 
   children, 
   delay = 0 
@@ -72,49 +74,35 @@ const FloatingElement = memo(function FloatingElement({
   delay?: number 
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: 1, 
-        y: 0,
-        transition: { 
-          duration: 0.6, 
-          delay,
-        }
+    <div
+      className="animate-fade-in-up"
+      style={{
+        animationDelay: `${delay}s`,
+        opacity: 0,
+        animationFillMode: 'forwards'
       }}
-      className="gpu-accelerated will-change-transform"
     >
       {children}
-    </motion.div>
+    </div>
   );
 });
 
 export const HeroSection = memo(function HeroSection() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, -100]);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background Elements - Simplified */}
-      <motion.div 
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{ y: y1 }}
-      >
+      {/* Static Background Elements - No scroll parallax for better performance */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-20 left-20 w-64 h-64 rounded-full border border-foreground/20" />
         <div className="absolute top-40 right-32 w-32 h-32 rounded-full border border-foreground/10" />
         <div className="absolute bottom-20 left-1/3 w-48 h-48 rounded-full border border-foreground/15" />
-      </motion.div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+              <div className="animate-fade-in-up" style={{ animationDelay: '0s' }}>
                 <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border bg-muted/50 text-muted-foreground">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   <span className="text-sm font-medium">Available for work</span>
@@ -134,14 +122,12 @@ export const HeroSection = memo(function HeroSection() {
                   I craft innovative web applications with React, Next.js, and AI/ML technologies, 
                   building user-focused solutions that drive real business impact.
                 </p>
-              </motion.div>
+              </div>
               
               {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="grid grid-cols-3 gap-8 py-8"
+              <div
+                className="grid grid-cols-3 gap-8 py-8 animate-fade-in-up"
+                style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}
               >
                 <div className="text-center">
                   <div className="text-3xl md:text-4xl font-bold mb-1">
@@ -161,14 +147,12 @@ export const HeroSection = memo(function HeroSection() {
                   </div>
                   <p className="text-sm text-muted-foreground">Satisfaction</p>
                 </div>
-              </motion.div>
+              </div>
               
               {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-col sm:flex-row gap-4"
+              <div
+                className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+                style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
               >
                 <Button size="lg" asChild className="group">
                   <Link href="/portfolio">
@@ -190,16 +174,14 @@ export const HeroSection = memo(function HeroSection() {
                     <IconArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
-              </motion.div>
+              </div>
             </div>
             
             {/* Right Content - Profile & Floating Elements */}
             <div className="lg:col-span-5 relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative z-10"
+              <div
+                className="relative z-10 animate-fade-in-up"
+                style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
               >
                 {/* Main Avatar */}
                 <div className="relative w-80 h-80 mx-auto">
@@ -236,29 +218,24 @@ export const HeroSection = memo(function HeroSection() {
                     </div>
                   </div>
                 </FloatingElement>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      <div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in"
+        style={{ animationDelay: '1s', opacity: 0, animationFillMode: 'forwards' }}
       >
         <div className="flex flex-col items-center gap-2 text-muted-foreground">
           <span className="text-sm">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
+          <div className="animate-bounce">
             <div className="w-px h-8 bg-muted-foreground/50" />
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 });
