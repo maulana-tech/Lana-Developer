@@ -15,6 +15,8 @@ import {
 } from '@tabler/icons-react';
 import { useRef, useEffect, useState, memo } from 'react';
 
+const prefersReducedMotion = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+
 // Animated Counter Component - Memoized & Optimized
 const AnimatedCounter = memo(function AnimatedCounter({ 
   end, 
@@ -52,7 +54,13 @@ const AnimatedCounter = memo(function AnimatedCounter({
             }
           };
           
-          rafRef.current = requestAnimationFrame(animate);
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+              rafRef.current = requestAnimationFrame(animate);
+            });
+          } else {
+            rafRef.current = requestAnimationFrame(animate);
+          }
         }
       },
       { threshold: 0.1 }

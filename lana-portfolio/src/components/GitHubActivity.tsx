@@ -132,7 +132,7 @@ export function GitHubActivity() {
                   className="rounded-lg"
                   style={{ width: 'auto', height: 'auto', maxWidth: '100%' }}
                   fallbackSrc="https://placehold.co/495x195/1a1b27/ffffff?text=GitHub+Stats"
-                  priority
+                  loading="lazy"
                 />
               </div>
             </CardContent>
@@ -162,7 +162,7 @@ export function GitHubActivity() {
                   className="rounded-lg"
                   style={{ width: 'auto', height: 'auto', maxWidth: '100%' }}
                   fallbackSrc="https://placehold.co/495x195/1a1b27/ffffff?text=Top+Languages"
-                  priority
+                  loading="lazy"
                 />
               </div>
               
