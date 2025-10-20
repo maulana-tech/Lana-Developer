@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd lana-portfolio && npm run build",
+  "outputDirectory": "lana-portfolio/.next",
+  "installCommand": "cd lana-portfolio && npm install",
+  "framework": "nextjs"
+}
