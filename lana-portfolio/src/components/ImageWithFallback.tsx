@@ -13,6 +13,8 @@ interface ImageWithFallbackProps {
   style?: React.CSSProperties;
   fallbackSrc?: string;
   priority?: boolean;
+  loading?: 'lazy' | 'eager';
+  placeholder?: 'blur' | 'empty';
 }
 
 export function ImageWithFallback({
@@ -24,6 +26,8 @@ export function ImageWithFallback({
   style,
   fallbackSrc,
   priority = false,
+  loading = 'lazy',
+  placeholder = 'empty',
 }: ImageWithFallbackProps) {
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
@@ -61,6 +65,8 @@ export function ImageWithFallback({
       style={style}
       onError={handleError}
       priority={priority}
+      loading={!priority ? loading : undefined}
+      placeholder={placeholder}
     />
   );
 }

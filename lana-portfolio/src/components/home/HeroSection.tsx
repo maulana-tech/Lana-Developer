@@ -15,7 +15,7 @@ import {
 } from '@tabler/icons-react';
 import { useRef, useEffect, useState, memo } from 'react';
 
-// Animated Counter Component - Memoized
+// Animated Counter Component - Memoized & Optimized
 const AnimatedCounter = memo(function AnimatedCounter({ 
   end, 
   duration = 2000, 
@@ -28,6 +28,7 @@ const AnimatedCounter = memo(function AnimatedCounter({
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (hasAnimated) return;
@@ -36,20 +37,22 @@ const AnimatedCounter = memo(function AnimatedCounter({
       (entries) => {
         if (entries[0].isIntersecting) {
           setHasAnimated(true);
-          const startTime = Date.now();
-          const timer = setInterval(() => {
-            const elapsed = Date.now() - startTime;
+          const startTime = performance.now();
+          
+          const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             const easeOutCubic = 1 - Math.pow(1 - progress, 3);
             setCount(Math.floor(easeOutCubic * end));
             
-            if (progress >= 1) {
-              clearInterval(timer);
+            if (progress < 1) {
+              rafRef.current = requestAnimationFrame(animate);
+            } else {
               setCount(end);
             }
-          }, 16);
+          };
           
-          return () => clearInterval(timer);
+          rafRef.current = requestAnimationFrame(animate);
         }
       },
       { threshold: 0.1 }
@@ -57,7 +60,10 @@ const AnimatedCounter = memo(function AnimatedCounter({
 
     if (ref.current) observer.observe(ref.current);
     
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [hasAnimated, end, duration]);
 
   return <span ref={ref}>{count}{suffix}</span>;
@@ -74,14 +80,15 @@ const FloatingElement = memo(function FloatingElement({
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
+      whileInView={{ 
         opacity: 1, 
         y: 0,
-        transition: { 
-          duration: 0.6, 
-          delay,
-        }
       }}
+      transition={{ 
+        duration: 0.6, 
+        delay,
+      }}
+      viewport={{ once: true, amount: 0.3 }}
       className="gpu-accelerated will-change-transform"
     >
       {children}
@@ -90,20 +97,16 @@ const FloatingElement = memo(function FloatingElement({
 });
 
 export const HeroSection = memo(function HeroSection() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, -100]);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Elements - Simplified */}
-      <motion.div 
+      <div 
         className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{ y: y1 }}
       >
         <div className="absolute top-20 left-20 w-64 h-64 rounded-full border border-foreground/20" />
         <div className="absolute top-40 right-32 w-32 h-32 rounded-full border border-foreground/10" />
         <div className="absolute bottom-20 left-1/3 w-48 h-48 rounded-full border border-foreground/15" />
-      </motion.div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -245,15 +248,16 @@ export const HeroSection = memo(function HeroSection() {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        viewport={{ once: true }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2 text-muted-foreground">
           <span className="text-sm">Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
           >
             <div className="w-px h-8 bg-muted-foreground/50" />
           </motion.div>

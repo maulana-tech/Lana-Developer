@@ -123,10 +123,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    contain: layout style paint;
   }
   /* Performance optimizations */
   img, video {
     content-visibility: auto;
+  }
+  /* Reduce animations on lower-end devices */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -212,8 +221,8 @@
   perspective: 1000px;
 }
 
-/* Smooth transitions */
-* {
+/* Smooth transitions - only for interactive elements */
+button, a, [role="button"], input, textarea, select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -221,4 +230,16 @@
 .overflow-scroll {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  contain: strict;
+}
+
+/* Optimize animation performance */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Lazy load images */
+img[loading="lazy"] {
+  background: var(--background);
 }
