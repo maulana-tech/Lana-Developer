@@ -10,10 +10,12 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: ["**/*"]
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Disable all rules
       "@next/next/no-html-link-for-pages": "off",
       "react/no-unescaped-entities": "off",
       "@next/next/no-img-element": "off",
@@ -22,11 +24,8 @@ const eslintConfig = [
       "react-hooks/exhaustive-deps": "off",
       "jsx-a11y/alt-text": "off",
       "import/no-anonymous-default-export": "off",
-      // This effectively disables all rules
       "@typescript-eslint/ban-ts-comment": "off"
-    },
-    // Add this to ignore all files
-    ignorePatterns: ["**/*"]
+    }
   }
 ];
 
