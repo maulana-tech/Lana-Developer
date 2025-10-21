@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">Maulana F</Link>
+          <Link href="/" className="text-xl font-bold">Muhammad Maulana F</Link>
           
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center space-x-8">
