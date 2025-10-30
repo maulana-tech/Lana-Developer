@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { 
   getAllProjectsFromDB, 
   getFeaturedProjectsFromDB, 
@@ -89,6 +90,84 @@ const mockProjects: Project[] = [
     link: "",
     github: "https://github.com/maulana-tech/task-management",
     featured: true,
+  },
+  {
+    id: "portfolio-website",
+    title: "Personal Portfolio Website",
+    description: "Modern and responsive portfolio website built with Next.js.",
+    longDescription: "A sleek portfolio website featuring project showcases, about section, contact form, and blog. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion for smooth animations.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    type: "Website",
+    image: "https://placehold.co/600x340/ec4899/ffffff?text=Portfolio+Website",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/portfolio",
+    featured: false,
+  },
+  {
+    id: "weather-app",
+    title: "Weather Forecast App",
+    description: "Real-time weather application with location-based forecasts.",
+    longDescription: "A weather application that provides real-time weather information, 7-day forecasts, and weather alerts. Features location search, current conditions, and interactive weather maps.",
+    tags: ["React", "API Integration", "JavaScript", "CSS"],
+    type: "Website",
+    image: "https://placehold.co/600x340/0ea5e9/ffffff?text=Weather+App",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/weather-app",
+    featured: false,
+  },
+  {
+    id: "blog-platform",
+    title: "Blog Publishing Platform",
+    description: "Full-stack blog platform with markdown support.",
+    longDescription: "A complete blogging platform with user authentication, markdown editor, commenting system, categories, tags, and SEO optimization. Built with modern web technologies.",
+    tags: ["Next.js", "MongoDB", "Node.js", "Markdown"],
+    type: "Website",
+    image: "https://placehold.co/600x340/f97316/ffffff?text=Blog+Platform",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/blog-platform",
+    featured: false,
+  },
+  {
+    id: "chat-application",
+    title: "Real-time Chat Application",
+    description: "WebSocket-based real-time messaging application.",
+    longDescription: "A real-time chat application featuring private messaging, group chats, file sharing, emoji support, and online status indicators. Built with Socket.io and React.",
+    tags: ["React", "Socket.io", "Node.js", "WebSocket"],
+    type: "Website",
+    image: "https://placehold.co/600x340/a855f7/ffffff?text=Chat+App",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/chat-app",
+    featured: false,
+  },
+  {
+    id: "fitness-tracker",
+    title: "Fitness Tracking App",
+    description: "Mobile-responsive fitness and workout tracking application.",
+    longDescription: "A comprehensive fitness tracker that helps users log workouts, track progress, set goals, and analyze fitness data with interactive charts and statistics.",
+    tags: ["React Native", "TypeScript", "Firebase", "Charts"],
+    type: "Mobile App",
+    image: "https://placehold.co/600x340/22c55e/ffffff?text=Fitness+Tracker",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/fitness-tracker",
+    featured: false,
+  },
+  {
+    id: "recipe-finder",
+    title: "Recipe Finder & Manager",
+    description: "Discover and save your favorite recipes.",
+    longDescription: "A recipe application that allows users to search for recipes, save favorites, create shopping lists, and share recipes with friends. Includes nutritional information and cooking instructions.",
+    tags: ["Vue.js", "API Integration", "JavaScript", "CSS"],
+    type: "Website",
+    image: "https://placehold.co/600x340/eab308/ffffff?text=Recipe+Finder",
+    images: [],
+    link: "",
+    github: "https://github.com/maulana-tech/recipe-finder",
+    featured: false,
   }
 ];
 
@@ -106,49 +185,49 @@ export type Project = {
   featured: boolean;
 };
 
-// Async functions (can use database or static data)
-export async function getAllProjects(): Promise<Project[]> {
+// Cached async functions with React cache for deduplication and performance
+export const getAllProjects = cache(async (): Promise<Project[]> => {
   if (USE_DATABASE) {
     return await getAllProjectsFromDB();
   }
   return mockProjects;
-}
+});
 
-export async function getFeaturedProjects(): Promise<Project[]> {
+export const getFeaturedProjects = cache(async (): Promise<Project[]> => {
   if (USE_DATABASE) {
     return await getFeaturedProjectsFromDB();
   }
   return mockProjects.filter(project => project.featured);
-}
+});
 
-export async function getProjectById(id: string): Promise<Project | null> {
+export const getProjectById = cache(async (id: string): Promise<Project | null> => {
   if (USE_DATABASE) {
     return await getProjectByIdFromDB(id);
   }
   return mockProjects.find(project => project.id === id) || null;
-}
+});
 
-export async function getProjectsByTag(tag: string): Promise<Project[]> {
+export const getProjectsByTag = cache(async (tag: string): Promise<Project[]> => {
   if (USE_DATABASE) {
     return await getProjectsByTagFromDB(tag);
   }
   return mockProjects.filter(project => project.tags.includes(tag));
-}
+});
 
-export async function getProjectsByType(type: string): Promise<Project[]> {
+export const getProjectsByType = cache(async (type: string): Promise<Project[]> => {
   if (USE_DATABASE) {
     return await getProjectsByTypeFromDB(type);
   }
   return mockProjects.filter(project => project.type === type);
-}
+});
 
-export async function getProjectTypes(): Promise<string[]> {
+export const getProjectTypes = cache(async (): Promise<string[]> => {
   if (USE_DATABASE) {
     return await getProjectTypesFromDB();
   }
   const types = [...new Set(mockProjects.map((project) => project.type))];
   return types.sort();
-}
+});
 
 // Synchronous functions for backward compatibility (using static data)
 export function getAllProjectsSync(): Project[] {
