@@ -18,13 +18,14 @@ export function convertDatabaseProject(dbProject: DatabaseProject): Project {
   };
 }
 
-// Get all projects from database
+// Get all projects from database with optimized query
 export async function getAllProjectsFromDB(): Promise<Project[]> {
   try {
     const { data, error } = await supabase
       .from(TABLES.PROJECTS)
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('id, title, description, long_description, tags, type, image, images, link, github, featured, created_at, updated_at')
+      .order('created_at', { ascending: false })
+      .limit(100); // Limit for performance
 
     if (error) {
       console.error('Error fetching projects:', error);
