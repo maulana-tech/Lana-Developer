@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:projects": "tsx scripts/seed-projects.ts",
+    "update:links": "tsx scripts/update-project-links.ts",
+    "generate:mock": "tsx scripts/generate-mock-data.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.0",
