@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Image from 'next/image';
 import { IconPhoto } from '@tabler/icons-react';
 
@@ -17,7 +17,7 @@ interface ImageWithFallbackProps {
   placeholder?: 'blur' | 'empty';
 }
 
-export function ImageWithFallback({
+const ImageWithFallbackComponent = ({
   src,
   alt,
   width,
@@ -28,7 +28,7 @@ export function ImageWithFallback({
   priority = false,
   loading = 'lazy',
   placeholder = 'empty',
-}: ImageWithFallbackProps) {
+}: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
 
@@ -69,4 +69,6 @@ export function ImageWithFallback({
       placeholder={placeholder}
     />
   );
-}
+};
+
+export const ImageWithFallback = memo(ImageWithFallbackComponent);
