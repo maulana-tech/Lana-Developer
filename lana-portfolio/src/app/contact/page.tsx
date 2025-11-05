@@ -8,6 +8,7 @@ import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMail, IconMap
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { FadeInScroll, ScaleOnScroll } from '@/components/ParallaxSection';
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -50,20 +51,23 @@ export default function ContactPage() {
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a potential collaboration? 
-            I'd love to hear from you. Fill out the form below or reach out directly.
-          </p>
-        </motion.div>
+        <FadeInScroll>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Have a project in mind or want to discuss a potential collaboration? 
+              I'd love to hear from you. Fill out the form below or reach out directly.
+            </p>
+          </motion.div>
+        </FadeInScroll>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <ScaleOnScroll scaleRange={[0.95, 1]}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -258,7 +262,8 @@ export default function ContactPage() {
               </div>
             </div>
           </motion.div>
-        </div>
+          </div>
+        </ScaleOnScroll>
       </div>
     </div>
   );
