@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
+import { ParallaxSection, FadeInScroll, ScaleOnScroll } from '@/components/ParallaxSection';
 import { 
   IconBrandReact, 
   IconBrandNextjs, 
@@ -198,10 +199,11 @@ export default function AboutPage() {
       </section>
 
       {/* Bento Grid Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <ParallaxSection speed={0.3}>
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/* Main Profile Card */}
               <BentoItem className="md:col-span-8 p-8" delay={0}>
                 <div className="flex flex-col md:flex-row items-center gap-8">
@@ -293,13 +295,15 @@ export default function AboutPage() {
                   </div>
                 </div>
               </BentoItem>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ParallaxSection>
 
       {/* Skills Section */}
-      <section className="py-20 bg-muted/30">
+      <FadeInScroll>
+        <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -381,10 +385,12 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInScroll>
 
       {/* Experience Section */}
-      <section className="py-20">
+      <ParallaxSection speed={0.35}>
+        <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -473,10 +479,12 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+        </section>
+      </ParallaxSection>
 
       {/* Education Section */}
-      <section className="py-20 bg-muted/20">
+      <FadeInScroll>
+        <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -530,10 +538,12 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInScroll>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <ScaleOnScroll scaleRange={[0.9, 1]}>
+        <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -600,7 +610,8 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+        </section>
+      </ScaleOnScroll>
     </div>
   );
 }
