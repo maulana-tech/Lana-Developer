@@ -2,9 +2,10 @@ import { getAllProjects } from '@/lib/projects';
 import { TopProjects } from '@/components/TopProjects';
 import { MoreProjectsSection } from '@/components/MoreProjectsSection';
 import { PortfolioHeader } from '@/components/PortfolioHeader';
+import { ParallaxSection, FadeInScroll } from '@/components/ParallaxSection';
 
-// Enable ISR with revalidation (1 hour)
-export const revalidate = 3600;
+// Enable ISR with revalidation (5 minutes for faster updates)
+export const revalidate = 300;
 
 // Generate metadata
 export const metadata = {
@@ -20,10 +21,16 @@ export default async function PortfolioPage() {
   return (
     <div className="py-20">
       <div className="container mx-auto px-4">
-        <PortfolioHeader />
-        <TopProjects projects={topProjects} />
+        <FadeInScroll>
+          <PortfolioHeader />
+        </FadeInScroll>
+        <ParallaxSection speed={0.3}>
+          <TopProjects projects={topProjects} />
+        </ParallaxSection>
         {remainingProjects.length > 0 && (
-          <MoreProjectsSection projects={remainingProjects} />
+          <FadeInScroll>
+            <MoreProjectsSection projects={remainingProjects} />
+          </FadeInScroll>
         )}
       </div>
     </div>
