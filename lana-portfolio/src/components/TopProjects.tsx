@@ -1,8 +1,7 @@
 'use client';
 
 import { Project } from '@/lib/projects';
-import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
 import { IconBrandGithub, IconExternalLink, IconSparkles } from '@tabler/icons-react';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import { Button } from '@/components/ui/button';
@@ -63,12 +62,17 @@ const ProjectLinks = memo(({ project, size = 'md' }: { project: Project; size?: 
 });
 ProjectLinks.displayName = 'ProjectLinks';
 
-export function TopProjects({ projects }: TopProjectsProps) {
-  if (!projects || !Array.isArray(projects) || projects.length === 0) {
+const TopProjectsComponent = ({ projects }: TopProjectsProps) => {
+  const topProjects = useMemo(() => {
+    if (!projects || !Array.isArray(projects) || projects.length === 0) {
+      return [];
+    }
+    return projects.slice(0, 6);
+  }, [projects]);
+
+  if (topProjects.length === 0) {
     return null;
   }
-
-  const topProjects = projects.slice(0, 6);
 
   return (
     <section className="relative py-24 overflow-hidden">
@@ -80,12 +84,7 @@ export function TopProjects({ projects }: TopProjectsProps) {
 
       <div className="container mx-auto px-4">
         {/* Enhanced Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-16"
-        >
+        <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="relative">
               <IconSparkles className="w-6 h-6 text-primary animate-pulse" />
@@ -99,7 +98,7 @@ export function TopProjects({ projects }: TopProjectsProps) {
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl">
             Explore my best projects showcasing modern technologies and creative problem-solving
           </p>
-        </motion.div>
+        </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[280px]">
@@ -114,14 +113,8 @@ export function TopProjects({ projects }: TopProjectsProps) {
             const isLarge = index === 0 || index === 3;
             
             return (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                className={`${gridSpan} group`}
-              >
-                <div className="relative h-full overflow-hidden rounded-2xl border-2 border-border hover:border-foreground/30 transition-all duration-500 bg-gradient-to-br from-card via-card/95 to-card/90 shadow-lg hover:shadow-2xl will-change-transform">
+              <div key={project.id} className={`${gridSpan} group`}>
+                <div className="relative h-full overflow-hidden rounded-2xl border-2 border-border hover:border-foreground/30 transition-all duration-300 bg-gradient-to-br from-card via-card/95 to-card/90 shadow-lg hover:shadow-2xl will-change-transform">
                   <ProjectBadge index={index} />
                   
                   {/* Image Background */}
@@ -205,11 +198,13 @@ export function TopProjects({ projects }: TopProjectsProps) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export const TopProjects = memo(TopProjectsComponent);
