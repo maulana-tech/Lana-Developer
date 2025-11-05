@@ -7,16 +7,20 @@ import { ImageWithFallback } from '@/components/ImageWithFallback';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
+import { memo, useMemo } from 'react';
 
 interface ProjectCardProps {
   project: Project;
   index?: number;
 }
 
-export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+const ProjectCardComponent = ({ project, index = 0 }: ProjectCardProps) => {
+  const displayTags = useMemo(() => project.tags.slice(0, 4), [project.tags]);
+  const hasMoreTags = useMemo(() => project.tags.length > 4, [project.tags.length]);
+  
   return (
     <div className="group h-full">
-      <Card className="overflow-hidden h-full border-2 hover:border-foreground/20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 bg-gradient-to-br from-background/90 via-background/95 to-background/90 backdrop-blur-sm">
+      <Card className="overflow-hidden h-full border-2 hover:border-foreground/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br from-background/90 via-background/95 to-background/90 backdrop-blur-sm will-change-transform">
         {/* Image Container with Overlay */}
         <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-muted/20 to-muted/5">
           <ImageWithFallback
@@ -24,8 +28,10 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             alt={project.title}
             width={600}
             height={340}
-            className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+            className="object-cover w-full h-full transition-all duration-500 group-hover:scale-105 group-hover:brightness-110 will-change-transform"
             fallbackSrc="https://placehold.co/600x340/e5e7eb/6b7280?text=Project+Image"
+            loading={index < 3 ? "eager" : "lazy"}
+            priority={index < 3}
           />
           
           {/* Gradient Overlay */}
@@ -68,19 +74,15 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           
           {/* Enhanced Tags */}
           <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.slice(0, 4).map((tag, tagIndex) => (
-              <motion.span
+            {displayTags.map((tag, tagIndex) => (
+              <span
                 key={tagIndex}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: tagIndex * 0.1 }}
-                viewport={{ once: true }}
-                className="px-3 py-1 bg-gradient-to-r from-muted/80 to-muted/40 text-foreground text-xs font-medium rounded-full border hover:border-foreground/20 transition-all duration-300 hover:scale-105"
+                className="px-3 py-1 bg-gradient-to-r from-muted/80 to-muted/40 text-foreground text-xs font-medium rounded-full border hover:border-foreground/20 transition-all duration-200 hover:scale-105"
               >
                 {tag}
-              </motion.span>
+              </span>
             ))}
-            {project.tags.length > 4 && (
+            {hasMoreTags && (
               <span className="px-3 py-1 bg-muted/50 text-muted-foreground text-xs rounded-full border">
                 +{project.tags.length - 4} more
               </span>
@@ -111,4 +113,6 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </Card>
     </div>
   );
-}
+};
+
+export const ProjectCard = memo(ProjectCardComponent);
