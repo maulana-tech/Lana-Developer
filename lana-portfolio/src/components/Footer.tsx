@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMail } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconMail } from '@tabler/icons-react';
 
 export default function Footer() {
   return (
@@ -14,14 +14,14 @@ export default function Footer() {
               <Link href="https://github.com/maulana-tech" target="_blank" aria-label="GitHub" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconBrandGithub size={20} />
               </Link>
-              <Link href="https://www.linkedin.com/in/muhammad-firdaussyah-083362293" target="_blank" aria-label="LinkedIn" className="text-foreground/70 hover:text-foreground transition-colors">
+              <Link href="https://www.linkedin.com/in/muhammad-maulana-firdaussyah-083362293" target="_blank" aria-label="LinkedIn" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconBrandLinkedin size={20} />
-              </Link>
-              <Link href="https://linktr.ee/maulanafirdaussyah" target="_blank" aria-label="Linktree" className="text-foreground/70 hover:text-foreground transition-colors">
-                <IconBrandTwitter size={20} />
               </Link>
               <Link href="mailto:firdaussyah03@gmail.com" aria-label="Email" className="text-foreground/70 hover:text-foreground transition-colors">
                 <IconMail size={20} />
+              </Link>
+              <Link href="https://www.instagram.com/lana.dev_/" target="_blank" aria-label="Instagram" className="text-foreground/70 hover:text-foreground transition-colors">
+                <IconBrandInstagram size={20} />
               </Link>
             </div>
           </div>

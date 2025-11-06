@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMail, IconMapPin, IconPhone, IconSend, IconCheck } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconMail, IconMapPin, IconPhone, IconSend, IconCheck, IconBrandInstagram } from '@tabler/icons-react';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -234,7 +234,7 @@ export default function ContactPage() {
                 
                 <motion.a
                   whileHover={{ y: -5 }}
-                  href="https://www.linkedin.com/in/muhammad-firdaussyah-083362293" 
+                  href="https://www.linkedin.com/in/muhammad-maulana-firdaussyah-083362293" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-secondary p-4 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -244,20 +244,20 @@ export default function ContactPage() {
                 
                 <motion.a
                   whileHover={{ y: -5 }}
-                  href="https://twitter.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-secondary p-4 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  <IconBrandTwitter size={24} />
-                </motion.a>
-                
-                <motion.a
-                  whileHover={{ y: -5 }}
                   href="mailto:firdaussyah03@gmail.com"
                   className="bg-secondary p-4 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   <IconMail size={24} />
+                </motion.a>
+
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  href="https://www.instagram.com/lana.dev_/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-secondary p-4 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  <IconBrandInstagram size={24} />
                 </motion.a>
               </div>
             </div>
